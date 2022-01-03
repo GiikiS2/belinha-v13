@@ -57,7 +57,7 @@ app.get("/login/callback", async (req, resp) => {
   data.append("client_id", process.env["clientid"]);
   data.append("client_secret", process.env["clientsecret"]);
   data.append("grant_type", "authorization_code");
-  data.append("redirect_uri", "http://localhost:3000/login/callback");
+  data.append("redirect_uri", "https://belinha-website.herokuapp.com/login/callback");
   data.append("scope", "identify");
   data.append("code", accessCode);
 
