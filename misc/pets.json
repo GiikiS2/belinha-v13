@@ -1,0 +1,26 @@
+[
+    {
+        "nome": "floppa", "tipo": "caracal", "preço": "1500"
+    },
+    {
+        "nome": "puffle vermelho", "tipo": "puffle", "preço": "420"
+    },
+    {
+        "nome": "puffle veado", "tipo": "puffle", "preço": "800"
+    },
+    {
+        "nome": "puffle Cristal Azul", "tipo": "puffle", "preço": "1200"
+    },
+    {
+        "nome": "puffle alien", "tipo": "puffle", "preço": "15000"
+    },
+    {
+        "nome": "puffle fantasma", "tipo": "puffle", "preço": "20000"
+    },
+    {
+        "nome": "calopipita", "tipo": "calopsita", "preço": "1500"
+    },
+    {
+        "nome": "Bela", "tipo": "cachorro", "preço": "1500"
+    }
+]

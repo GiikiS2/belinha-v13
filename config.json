@@ -1,0 +1,11 @@
+{
+  "prefix": "b*",
+  "session": {
+    "secret": "belinhagay",
+    "cookie": {
+        "maxAge": 86400000
+    },
+    "resave": true,
+    "saveUninitialized": false
+}
+}

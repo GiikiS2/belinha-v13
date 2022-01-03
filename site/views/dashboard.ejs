@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta data-n-head='ssr' data-hid='theme-color' name='theme-color' content='#fc035a'>
+  <meta name="title" content="Belinha Bot Website">
+  <meta name="description" content="um simples bot para discord :)">
+  <meta name="keywords" content="discord, bot, giiki, giikinotfound, belinha, r2">
+  <meta name="robots" content="index, follow">
+  <meta property="og:image" content="https://media.discordapp.net/attachments/803083179706679366/838806028656443392/belinha.png?width=480&height=480">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link id="favicon" rel="icon" href="https://media.discordapp.net/attachments/821036317344923660/838605199123021864/belinha.png?width=480&height=480" type="image/x-icon" />
+  <meta name="language" content="Portuguese">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel de controle - Belinha 🎀</title>
+
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+  <link rel="Stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js%22%3E">
+
+  </script>
+  <link rel="stylesheet" href="https://kurayami.ml/css/now-ui-kit.css" />
+  <link rel="stylesheet" href="https://kurayami.ml/css/bootstrap.min.css" />
+
+  <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
+
+  <script src="https://kit.fontawesome.com/a076d05399.js%22%3E">
+
+  </script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+
+  </script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg" style="background: rgba(0, 0, 0, 0.699); margin-bottom: 0px;">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars navbar-toggler" style="color: #fff !important;"></i>
+      </button>
+      <a class="navbar-brand">
+        <p class="titulo-bre"> <%= client.user.username %> Dashboard</p>
+      </a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/" style="transition: all .35s ease-in-out;"><i class="fas fa-home"></i>
+              Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="https://belinha-website.herokuapp.com/#comandos" style="transition: all .35s ease-in-out;"><i class="fa fa-terminal"></i>
+              Comandos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="https://belinha-website.herokuapp.com/#suporte" style="transition: all .35s ease-in-out;"><i class="fab fa-discord"></i>
+              Suporte</a>
+          </li>
+        </ul>
+        <% if(!req.session.bearer_token) {%>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="/login" aria-current="page" style="transition: all .35s ease-in-out;"><i class="fas fa-sign-in-alt"></i>
+              login</a>
+          </li>
+        </ul>
+        <% } %>
+        <% if(req.session.bearer_token) {%>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="/dashboard" aria-current="page" style="transition: all .35s ease-in-out;">
+              <img src=<%=`https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.png?size=256`%> style="
+                width: 40px;
+                height: 40px;
+                top: 8px;
+                border-radius: 100%;">
+              <%= json.username %></a>
+          </li>
+        </ul>
+        <% } %>
+        <div class="nav-item navbar-nav">
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="w3-sidebar sidebar" style="width: 17%; background-color: rgba(209, 209, 209, 0.418);">
+
+    <div class="discord-scroller">
+      <a href="/servers">
+        <div class="item">
+          <i class="fas fa-cogs"></i>
+          Servidores
+        </div>
+      </a>
+
+      <div class="info">
+        Configs pessoais
+      </div>
+
+      <a href="/pet">
+        <div class="item">
+          <i class="fas fa-paw"></i>
+          Pet
+        </div>
+      </a>
+
+      <a href="/profile">
+        <div class="item">
+          <i class="fas fa-user-circle"></i>
+          Perfil
+        </div>
+      </a>
+
+      <div class="info">
+        Shop
+      </div>
+
+      <a href="/loja">
+        <div class="item">
+          <i class="fas fa-dog"></i>
+          PetShop
+        </div>
+      </a>
+      <a href="/loja">
+        <div class="item">
+          <i class="fas fa-home"></i>
+          Casa
+        </div>
+      </a>
+      <a href="/loja">
+        <div class="item">
+          <i class="fas fa-bookmark"></i>
+          Banner
+        </div>
+      </a>
+
+      <div class="discord-end">
+        <a href="/logout">
+          <div class="item" style="color: rgb(242, 30, 58);">
+            <i class="fas fa-sign-out-alt"></i>
+            logout
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</body>
+
+</html>

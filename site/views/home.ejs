@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta data-n-head='ssr' data-hid='theme-color' name='theme-color' content='#fc035a'>
+  <meta name="title" content="Belinha Bot Website">
+  <meta name="description" content="um simples bot para discord :)">
+  <meta name="keywords" content="discord, bot, giiki, giikinotfound, belinha, r2">
+  <meta name="robots" content="index, follow">
+  <meta property="og:image" content="https://media.discordapp.net/attachments/803083179706679366/838806028656443392/belinha.png?width=480&height=480">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link id="favicon" rel="icon" href="https://media.discordapp.net/attachments/821036317344923660/838605199123021864/belinha.png?width=480&height=480" type="image/x-icon" />
+  <meta name="language" content="Portuguese">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Belinha Bot Website 🎀</title>
+
+  <link href="css/style.css" rel="stylesheet">
+
+
+  <link rel="Stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js%22%3E">
+
+  </script>
+  <link rel="stylesheet" href="https://kurayami.ml/css/now-ui-kit.css" />
+  <link rel="stylesheet" href="https://kurayami.ml/css/bootstrap.min.css" />
+
+  <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
+
+  <script src="https://kit.fontawesome.com/a076d05399.js%22%3E">
+
+  </script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+
+  </script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg" style="background: rgba(0, 0, 0, 0.699); box-shadow: 0 0px 25px #240024b9;">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars navbar-toggler" style="color: #fff !important;"></i>
+      </button>
+      <a class="navbar-brand">
+        <p class="titulo-bre"> <%= client.user.username %></p>
+      </a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/" style="transition: all .35s ease-in-out;"><i class="fas fa-home"></i>
+              Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="#comandos" style="transition: all .35s ease-in-out;"><i class="fa fa-terminal"></i>
+              Comandos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="#suporte" style="transition: all .35s ease-in-out;"><i class="fab fa-discord"></i>
+              Suporte</a>
+          </li>
+        </ul>
+        <% if(!req.session.bearer_token) {%>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="/login" aria-current="page" style="transition: all .35s ease-in-out;"><i class="fas fa-sign-in-alt"></i>
+              login</a>
+          </li>
+        </ul>
+        <% } %>
+        <% if(req.session.bearer_token) {%>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="/dashboard" aria-current="page" style="transition: all .35s ease-in-out;">
+                <img src=<%=`https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.png?size=256`%> style="
+                width: 40px;
+                height: 40px;
+                top: 8px;
+                border-radius: 100%;">
+                <%= json.username %></a>
+            </li>
+          </ul>
+          <% } %>
+        <div class="nav-item navbar-nav">
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="sobre-mim">
+    <div class="image-user">
+      <img class="imgem-user" src="<%= client.user.avatarURL({ dynamic: true, format: "png", size: 1024 }) %>" style="width: 200px; height: 200px; border-radius: 50%;" />
+    </div>
+    <div class="titulo-e-desc-sobre">
+      <h1 class="titulo-bre"><%= client.user.username %></h1>
+      <p class="desc-sobre">Um simples bot de discord :)</p>
+    </div>
+    <div class="titulo-e-desc-sobre"> <br>
+      <button class="confetti-button" onclick="window.open('https://discord.com/oauth2/authorize?client_id=757352173481885717&scope=bot&permissions=2147483647')">✨ | Me adicione no seu servidor!</button>
+      <button class="confetti-button" onclick="window.open('https://discord.gg/F7AWJZaYv8')">🤝 | servidor de suporte!</button>
+      <br><br><br>
+      <h1 class="sec-t">Features!</h1>
+      <main class="cards">
+        <section class="card">
+          <div class="icon">
+            <img src="assets/three.png" alt="Contact us.">
+          </div>
+          <h3>Servers</h3>
+          <span>Belinha esta atualmente online em <%= client.guilds.cache.size %> servidores!</span>
+          <button onclick="window.open('https://discord.com/oauth2/authorize?client_id=757352173481885717&scope=bot&permissions=2147483647')">Convidar</button>
+        </section>
+        <section class="card">
+          <div class="icon">
+            <img src="assets/two.png" alt="Shop here.">
+          </div>
+          <h3>Comandos</h3>
+          <span>Comandos para remover o fundo de uma imagem, abrir o youtube together e mais, estão disponíveis na Belinha.</span>
+          <a href='#comandos'><button> Saber mais</button></a>
+        </section>
+        <section class="card">
+          <div class="icon">
+            <img src="assets/one.png" alt="About us.">
+          </div>
+          <h3>Welcome</h3>
+          <span>A Belinha dâ ás boas vindas aos novos membros com uma imagem criada na hora e uma mensagem incrivel!</span>
+          <button>Saber mais</button>
+        </section>
+      </main>
+
+      <h1 class="sec-t" id="comandos">Comandos!</h1>
+      <br>
+
+      <% categorias.forEach((categoria) => { %>
+      <details>
+        <summary>
+          <h2> <%= categoria %> </h2>
+        </summary>
+        <div class="commandsnow">
+          <% client.commands.filter(c => c.categoria === categoria).forEach((comando) =>{%>
+          <a class="comando" style="color: #580c33; font-size: 100%;"> -<%= comando.name %>:</a> <%= comando.desc %> <p>
+            <%})%>
+        </div>
+      </details>
+      <% })%> <br>
+      <bt>
+
+        <h1 class="sec-t" id="suporte">Suporte!</h1>
+        <br>
+        <a class="comando" style="color: #79174a93; font-size: 100%;"> Comando: O comando b*help pode sanar boa parte de suas dúvidas </a>
+        <p></p>
+        <details>
+          <summary class="comando" style="color: #79174a93; font-size: 100%;"> Servidor: Caso ainda esteja precisando de ajuda entre no servidor abaixo e me marque (@giiki_S2), lhe ajudarei com prazer :) </summary>
+          <br>
+          <a href='https://discord.gg/3WxSgzXenF'><img src="https://discordapp.com/api/guilds/803082302795808769/widget.png?style=banner3" style="border-radius: 7px;"> </a>
+        </details>
+        <br> <br> <br>
+
+        <footer>
+          <div style=" background:rgba(29, 29, 29, 0);">
+            <a style="color: rgb(0, 0, 0);"> @Giiki_S2 </a>
+            <br>
+          </div>
+        </footer>
+</body>
+
+</html>
