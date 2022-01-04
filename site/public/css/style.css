@@ -731,3 +731,55 @@ a {
     -webkit-filter: drop-shadow(5px 5px 5px #222);
     filter: drop-shadow(5px 5px 5px rgba(10, 0, 39, 0.583));
 }
+
+.shop-items {
+    box-shadow: 0 0px 25px #04002c44;
+    float: left;
+    margin: 5px;
+    width: 140px;
+    border-radius: 10px;
+    background-color: rgba(244, 243, 255, 0.569);
+    transition: all 0.5s;
+}
+
+.item-name {
+    padding: 15px;
+    font-family: 'Fredoka One', cursive;
+    color: #ffffff;
+    text-align: center;
+    word-wrap: break-word;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 300px;
+    background-color: rgba(0, 0, 0, 0.282);
+}
+
+.shop-item {
+    border-radius: 10px;
+    background: radial-gradient(circle, rgba(140,152,174,1) 0%, rgba(47,63,92,1) 100%);
+    position: relative;
+    display: block;
+    overflow: hidden;
+    transition: box-shadow .3s;
+    cursor: pointer;
+    z-index: 2;
+    transition: .3s;
+}
+
+.shop-item img{
+    padding: 10px;
+}
+
+.shop-item a:hover,.shop-item:hover {
+    box-shadow: 0 0 0 5px #fff;
+    overflow: hidden;
+    transform: scale(1.1);
+}
+
+.preço{
+    padding: 1px;
+    font-family: 'Fredoka One', cursive;
+    color: #ffffff;
+    text-align: center;
+}

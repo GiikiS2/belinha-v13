@@ -7,6 +7,7 @@ const cliente = client
 let { categorias, common } = require("./backend.js");
 const FormData = require("form-data");
 const fetch = require("node-fetch");
+let pets = require("../misc/pets.json");
 app.use(require("express-session")(config.session));
 
 app.set("view engine", "ejs");
@@ -61,6 +62,20 @@ app.get("/pet", async function(req, res) {
     if(!data)await pdb.User.create({userID: json.id})
 
     res.render("../site/views/pet", { json, data, req });
+});
+
+app.get("/shop", async function(req, res) {
+    if (!req.session.bearer_token) return res.redirect("/");
+
+    const user = await fetch(`https://discord.com/api/users/@me`, {
+        headers: { Authorization: `Bearer ${req.session.bearer_token}` },
+    });
+    const json = await user.json();
+    let data = await pdb.User.findOne({userID: json.id})
+    if(!data)await pdb.User.create({userID: json.id})
+    const { id } = req.query;
+
+    res.render("../site/views/shop", { json, pets, id, data, req });
 });
 
 app.get("/api/welcome", function(req, res) {
