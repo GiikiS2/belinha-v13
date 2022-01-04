@@ -47,6 +47,9 @@
 
     <div class="meio">
       <h2>Servidores</h2>
+      <% if(!mootguilds) { %>
+        <p>Não há servidores.</p>
+        <% } %>
       <% mootguilds.forEach((server)=> { %>
         <a href="/server">
           <div class="server">
