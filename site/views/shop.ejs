@@ -49,20 +49,63 @@
                     <% if(id==="pet" ) { %>
                         <h2>Pets</h2>
                         <% pets.forEach(pet=> { %>
-                            <div class="shop-items">
-                                <div class="shop-item">
-                                    <img src= <%= `https://belinha-website.herokuapp.com/assets/pets/${pet.alt}.png`  %> >
-                                    <div class="item-name" style="border-top:4px solid #ec27ff">
+
+                            <div id="myModal-<%= pet.alt%>" class="modal">
+                                <div class="modal-content">
+                                    <h2 style="padding: 10px;">
                                         <%= pet.nome %>
-                                        <div class="preço"><i class="fas fa-coins"></i> <%= pet.preço %></div>
+                                    </h2>
+                                    <p style="padding: 10px; float: left;">
+                                        <img src=<%=`https://belinha-website.herokuapp.com/assets/pets/${pet.alt}.png`
+                                            %> style="width: 40%; float: right">
+                                        Você esta prestes a adotar este pet, caso já tenha um, ele sera substituído
+                                    </p>
+
+                                    <div class="footer-modal">
+                                        <a href="/pet">
+                                            <div class="discord-btn" style="float: right;"><i
+                                                    class="fas fa-shopping-basket"></i> Comprar </div>
+                                        </a>
+                                        <a onclick="closeMod(`myModal-<%= pet.alt %>`)" style="cursor:pointer">
+                                            <div class="discord-btn"
+                                                style="background-color: rgb(255, 0, 47); float: right;"><i
+                                                    class="fas fa-times"></i> Sair </div>
+                                        </a>
                                     </div>
                                 </div>
+
                             </div>
 
+                            <a onclick="openMod(`myModal-<%= pet.alt %>`)">
+                                <div class="item-shop">
+                                    <img class="img-shop"
+                                        src=<%=`https://belinha-website.herokuapp.com/assets/pets/${pet.alt}.png` %>
+                                    >
+                                    <div class="name-shop" style="border-top:4px solid #ec27ff">
+                                        <%= pet.nome %>
+                                            <div class="item-desc">
+                                                <%= pet.tipo %>
+                                            </div>
+                                            <div class="preço"><i class="fas fa-coins"></i>
+                                                <%= pet.preço %>
+                                            </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <script>
+                                function openMod(id) {
+                                    var modal = document.getElementById(id);
+                                    modal.style.display = "block";
+                                }
+                                function closeMod(id) {
+                                    var modal = document.getElementById(id);
+                                    modal.style.display = "none";
+                                }
+                            </script>
                             <% }) %>
                                 <% } %>
 
-                                    
+
 
                 </div>
 </body>
