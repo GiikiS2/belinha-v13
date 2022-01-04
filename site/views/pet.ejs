@@ -46,20 +46,11 @@
     <%- include('partials/navbar.ejs') %>
 
     <div class="meio">
-      <h2>Servidores</h2>
-      <% mootguilds.forEach((server)=> { %>
-        <a href="/server">
-          <div class="server">
-            <img class="server-icon" <% if(server.icon===null ){ image='../assets/noicon.webp' } else { image=`
-              https://cdn.discordapp.com/icons/${server.id}/${server.icon}.png?size=256` }%> src=
-            <%= image %>>
-              <div class="server-name">
-                <%= server.name %>
-              </div>
-          </div>
-        </a>
-        <% }) %>
-    </div>
+      
+        <div class="pet" style="background-image: url(<%=data.igluimg%>)">
+            <img class="petimg" src= <%= data.puffleimg %> >
+        </div>
+
   </div>
 </body>
 

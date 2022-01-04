@@ -54,7 +54,7 @@
     <!-- Meta -->
     <meta data-n-head='ssr' data-hid='theme-color' name='theme-color' content='#fc035a'>
     <meta data-n-head='ssr' data-hid='og:type' name='og:type' content='website'>
-    <meta data-n-head='ssr' data-hid='og:title' name='og:title' content=<%= client.user.username %> >
+    <meta data-n-head='ssr' data-hid='og:title' name='og:title' content= Belinha >
     <meta data-n-head='ssr' data-hid='og:image' name='og:image'
         content='https://media.discordapp.net/attachments/914990230581444649/916514651221688350/94d6aeef4547ee478d548a25b4d87f6e29385ca1r1-828-1027v2_hq.jpg'>
         <meta name="keywords" content="discord, bot, giiki, giikinotfound, giiki_s2, belinha, r2">
@@ -62,29 +62,7 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg" style="background: rgba(0, 0, 0, 0.699); box-shadow: 0 0px 25px #240024b9;">
-		<div class="container-fluid">
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-bars navbar-toggler" style="color: #fff !important;"></i>
-            </button>
-            <a class="navbar-brand"> <p class="titulo-bre"> <%= client.user.username %></p> </a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/"
-                            style="font-size: 1em; padding: 13px; transition: all .35s ease-in-out;"><i
-                                class="fas fa-home"></i>
-                            Inicio</a>
-                    </li>
-                </ul>
-                <div class="nav-item navbar-nav">
-                    
-                    
-                </div>
-            </div>
-        </div>
-    </nav>
+    <%- include('partials/navbar.ejs') %>
 
     <div class="snowflakes" aria-hidden="true">
         <div class="snowflake">

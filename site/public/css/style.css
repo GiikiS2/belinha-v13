@@ -549,6 +549,7 @@ html {
 }
 
 .sidebar {
+    background-color: #fbfbfe;
     transition: 0.5s;
     width: 17%;
     color: #fff9;
@@ -686,6 +687,15 @@ a {
     height: auto;
 }
 
+@media screen and (max-width: 500px) {
+    .server{
+        width: 45%;
+    }
+    .meio{
+        width: 90%;
+    }
+  }
+
 .menu-name {
     padding: 8px 16px;
     text-align: center;
@@ -698,3 +708,22 @@ a {
     font-family: 'Fredoka One', cursive;
 }
 
+.pet {
+    background-color: rgba(210, 217, 233, 0.658);
+    width: 700px;
+    height: 600px;
+    box-shadow: 0 0px 25px #04002c44;
+    margin: 5px;
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.petimg {
+    position:absolute;
+    margin-top: 250px;
+    margin-left: 200px;
+    width: 20%;
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px rgba(10, 0, 39, 0.583));
+}

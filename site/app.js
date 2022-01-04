@@ -1,7 +1,9 @@
 var express = require("express");
+const pdb = require("../misc/economydb.js");
 let config = require("../config.json");
 var app = express();
 let client = require("../index.js");
+const cliente = client
 let { categorias, common } = require("./backend.js");
 const FormData = require("form-data");
 const fetch = require("node-fetch");
@@ -18,7 +20,7 @@ app.get("/", async function(req, res) {
     }); // Fetching user data
     const json = await data.json();
 
-    res.render("../site/views/home", { client, categorias, json, req });
+    res.render("../site/views/home", { cliente, categorias, json, req });
 });
 
 app.get("/dashboard", async function(req, res) {
@@ -34,14 +36,26 @@ app.get("/dashboard", async function(req, res) {
     const json = await user.json();
     const guildas = await guilds.json();
 
-    const Guilds = Array.from(client.guilds.cache);
+    const Guilds = Array.from(cliente.guilds.cache);
 
     let permguild = Object.values(guildas).filter(
         (valor) => (valor.permissions & (1 << 3)) == 1 << 3
     );
 
     let mootguilds = permguild //Guilds.filter(value => permguild.includes(value.id));
-    res.render("../site/views/dashboard", { client, categorias, json, mootguilds, req });
+    res.render("../site/views/dashboard", { cliente, categorias, json, mootguilds, req });
+});
+
+app.get("/pet", async function(req, res) {
+    if (!req.session.bearer_token) return res.redirect("/");
+
+    const user = await fetch(`https://discord.com/api/users/@me`, {
+        headers: { Authorization: `Bearer ${req.session.bearer_token}` },
+    });
+    const json = await user.json();
+    let data = await pdb.User.findOne({userID: json.id})
+
+    res.render("../site/views/pet", { json, data, req });
 });
 
 app.get("/api/welcome", function(req, res) {
@@ -71,9 +85,7 @@ app.get("/login/callback", async(req, resp) => {
     resp.redirect("/");
 });
 
-app.get("/profile", (req, res) => {
-    res.render("../site/views/profile", { client, categorias, json, mootguilds, req });
-})
+
 
 app.get("/login", (req, res) => {
     res.redirect(`https://discord.com/api/oauth2/authorize` +
@@ -83,7 +95,7 @@ app.get("/login", (req, res) => {
 });
 
 app.get("*", function(req, res) {
-    res.render("../site/views/404", { client });
+    res.render("../site/views/404", {req});
 });
 
 const server = app.listen(process.env.PORT || 3000, () => {

@@ -1,0 +1,58 @@
+<div class="sidebar" id="sidebarg">
+  <a class="hamburguer" onclick="openNav()">
+    <div class="item"><i class="fas fa-bars"></i></div>
+  </a>
+  
+  <p class="menu-name">
+    Belinha Dashboard
+  </p>
+
+  <hr>
+
+  <script>
+    function openNav() {
+      let nav = document.getElementById("sidebarg");
+      if(nav.className === "sidebar"){
+        nav.className += " responsive";
+      }else{
+        nav.className = "sidebar";
+      }
+    }
+    </script>
+
+  <div class="discord-scroller">
+    <a href="/dashboard">
+      <div class="item"><i class="fas fa-cogs"></i> Servidores</div>
+    </a>
+
+    <div class="info">Configs pessoais</div>
+
+    <a href="/pet">
+      <div class="item"><i class="fas fa-paw"></i> Pet</div>
+    </a>
+
+    <a href="/profile">
+      <div class="item"><i class="fas fa-user-circle"></i> Perfil</div>
+    </a>
+
+    <div class="info">Shop</div>
+
+    <a href="/loja">
+      <div class="item"><i class="fas fa-dog"></i> PetShop</div>
+    </a>
+    <a href="/loja">
+      <div class="item"><i class="fas fa-home"></i> Casa</div>
+    </a>
+    <a href="/loja">
+      <div class="item"><i class="fas fa-bookmark"></i> Banner</div>
+    </a>
+
+    <div class="discord-end">
+      <a href="/logout">
+        <div class="item" style="color: rgb(242, 30, 58)">
+          <i class="fas fa-sign-out-alt"></i> logout
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
