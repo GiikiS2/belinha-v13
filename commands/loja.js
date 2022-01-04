@@ -177,7 +177,6 @@ module.exports.run = async (client, message, args) => {
                         m2.edit({
                           embeds: [embedno],
                           components: [],
-                          files: [`https://belinha-website.herokuapp.com/assets/pets/${infopet.nome}.png`],
                         });
                         let embeddi = new Discord.MessageEmbed().setTitle(
                           `:coin: | **__ ${infopet.preço} r2coins foram removidos de sua conta!__**`
@@ -225,7 +224,6 @@ module.exports.run = async (client, message, args) => {
                 m2.edit({
                   embeds: [embedno],
                   components: [],
-                  files: [`https://belinha-website.herokuapp.com/assets/pets/${infopet.nome}.png`],
                 });
                 let embeddi = new Discord.MessageEmbed().setTitle(
                   `:coin: | **__ ${infopet.preço} r2coins foram removidos de sua conta!__**`

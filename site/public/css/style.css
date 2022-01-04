@@ -679,6 +679,9 @@ a {
     color: #414141;
     text-align: center;
     word-wrap: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 2px;
 }
 
 .server-icon {
