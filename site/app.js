@@ -20,6 +20,7 @@ app.get("/", async function(req, res) {
     }); // Fetching user data
     const json = await user.json();
     let data = await pdb.User.findOne({userID: json.id})
+    if(!data)await pdb.User.create({userID: json.id})
 
     res.render("../site/views/home", { cliente, data, categorias, json, req });
 });
@@ -39,6 +40,7 @@ app.get("/dashboard", async function(req, res) {
 
     const Guilds = Array.from(cliente.guilds.cache);
     let data = await pdb.User.findOne({userID: json.id})
+    if(!data)await pdb.User.create({userID: json.id})
 
     let permguild = Object.values(guildas).filter(
         (valor) => (valor.permissions & (1 << 3)) == 1 << 3
@@ -56,6 +58,7 @@ app.get("/pet", async function(req, res) {
     });
     const json = await user.json();
     let data = await pdb.User.findOne({userID: json.id})
+    if(!data)await pdb.User.create({userID: json.id})
 
     res.render("../site/views/pet", { json, data, req });
 });
@@ -102,6 +105,7 @@ app.get("*", async function(req, res) {
     });
     const json = await user.json();
     let data = await pdb.User.findOne({userID: json.id})
+    if(!data)await pdb.User.create({userID: json.id})
 
     res.render("../site/views/404", {req, data, json});
 });
