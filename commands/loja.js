@@ -157,7 +157,7 @@ module.exports.run = async (client, message, args) => {
                         );
                         await pdb.User.findOneAndUpdate(
                           { userID: message.author.id },
-                          { puffleimg: `./assets/pets/${infopet.nome}.png` }
+                          { puffleimg: `https://belinha-website.herokuapp.com/assets/pets/${infopet.nome}.png` }
                         );
                         await pdb.User.findOneAndUpdate(
                           { userID: message.author.id },
@@ -170,14 +170,13 @@ module.exports.run = async (client, message, args) => {
                           .setTitle(
                             `🐕 **__| Você adotou um ${infopet.nome}!__**`
                           )
-                          .setImage(`attachment://${infopet.nome}.png`)
+                          .setImage(`https://belinha-website.herokuapp.com/assets/pets/`)
                           .setDescription(
                             "lembrando que você pode mudar o nome do pet com b*comando"
                           );
                         m2.edit({
                           embeds: [embedno],
                           components: [],
-                          files: [`./assets/pets/${infopet.nome}.png`],
                         });
                         let embeddi = new Discord.MessageEmbed().setTitle(
                           `:coin: | **__ ${infopet.preço} r2coins foram removidos de sua conta!__**`
@@ -207,7 +206,7 @@ module.exports.run = async (client, message, args) => {
                 );
                 await pdb.User.findOneAndUpdate(
                   { userID: message.author.id },
-                  { puffleimg: `./assets/pets/${infopet.nome}.png` }
+                  { puffleimg: `https://belinha-website.herokuapp.com/assets/pets/${infopet.nome}.png` }
                 );
                 await pdb.User.findOneAndUpdate(
                   { userID: message.author.id },
@@ -218,14 +217,13 @@ module.exports.run = async (client, message, args) => {
 
                 let embedno = new Discord.MessageEmbed()
                   .setTitle(`🐕 **__| Você adotou um ${infopet.nome}!__**`)
-                  .setImage(`attachment://${infopet.nome}.png`)
+                  .setImage(`https://belinha-website.herokuapp.com/assets/pets/${infopet.nome}.png`)
                   .setDescription(
                     "lembrando que você pode mudar o nome do pet com b*comando"
                   );
                 m2.edit({
                   embeds: [embedno],
                   components: [],
-                  files: [`../assets/pets/${infopet.nome}.png`],
                 });
                 let embeddi = new Discord.MessageEmbed().setTitle(
                   `:coin: | **__ ${infopet.preço} r2coins foram removidos de sua conta!__**`
