@@ -99,6 +99,25 @@ app.get("/login", (req, res) => {
         `&response_type=code&scope=identify%20guilds`)
 });
 
+app.get("/logout", async(req, resp) => {
+    if (!req.session.bearer_token) return resp.redirect("/");
+
+    const data = new FormData();
+    data.append("client_id", process.env["clientid"]);
+    data.append("client_secret", process.env["clientsecret"]);
+    data.append('token', req.session.bearer_token);
+
+    const json = await (
+        await fetch("https://discord.com/api/oauth2/token/revoke", {
+            method: "POST",
+            body: data,
+        })
+    ).json();
+    req.session.bearer_token = json.access_token;
+
+    resp.redirect("/");
+});
+
 app.get("*", async function(req, res) {
     const user = await fetch(`https://discord.com/api/users/@me`, {
         headers: { Authorization: `Bearer ${req.session.bearer_token}` },
