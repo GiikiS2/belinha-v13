@@ -157,7 +157,7 @@ module.exports.run = async (client, message, args) => {
                         );
                         await pdb.User.findOneAndUpdate(
                           { userID: message.author.id },
-                          { puffleimg: `./imgs/pets/${infopet.nome}.png` }
+                          { puffleimg: `belinha-website.herokuapp.com/assets/pets/${infopet.nome}.png` }
                         );
                         await pdb.User.findOneAndUpdate(
                           { userID: message.author.id },
@@ -177,7 +177,7 @@ module.exports.run = async (client, message, args) => {
                         m2.edit({
                           embeds: [embedno],
                           components: [],
-                          files: [`./imgs/pets/${infopet.nome}.png`],
+                          files: [`belinha-website.herokuapp.com/assets/pets/${infopet.nome}.png`],
                         });
                         let embeddi = new Discord.MessageEmbed().setTitle(
                           `:coin: | **__ ${infopet.preço} r2coins foram removidos de sua conta!__**`
@@ -207,7 +207,7 @@ module.exports.run = async (client, message, args) => {
                 );
                 await pdb.User.findOneAndUpdate(
                   { userID: message.author.id },
-                  { puffleimg: `./imgs/pets/${infopet.nome}.png` }
+                  { puffleimg: `belinha-website.herokuapp.com/assets/pets/${infopet.nome}.png` }
                 );
                 await pdb.User.findOneAndUpdate(
                   { userID: message.author.id },
@@ -225,7 +225,7 @@ module.exports.run = async (client, message, args) => {
                 m2.edit({
                   embeds: [embedno],
                   components: [],
-                  files: [`./imgs/pets/${infopet.nome}.png`],
+                  files: [`belinha-website.herokuapp.com/assets/pets/${infopet.nome}.png`],
                 });
                 let embeddi = new Discord.MessageEmbed().setTitle(
                   `:coin: | **__ ${infopet.preço} r2coins foram removidos de sua conta!__**`
