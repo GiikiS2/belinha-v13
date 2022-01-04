@@ -1,45 +1,47 @@
 <nav class="navbar navbar-expand-lg" style="background: rgba(0, 0, 0, 0.699); margin-bottom: 0px">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars navbar-toggler" style="color: #fff !important"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/" style="transition: all 0.35s ease-in-out"><i
-                class="fas fa-home"></i> Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="https://belinha-website.herokuapp.com/#comandos"
-              style="transition: all 0.35s ease-in-out"><i class="fa fa-terminal"></i> Comandos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="https://belinha-website.herokuapp.com/#suporte"
-              style="transition: all 0.35s ease-in-out"><i class="fab fa-discord"></i> Suporte</a>
-          </li>
-        </ul>
-        <% if(!req.session.bearer_token) { %>
-          <ul class="navbar-nav ml-auto">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars navbar-toggler" style="color: #fff !important"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/" style="transition: all 0.35s ease-in-out"><i
+              class="fas fa-home"></i> Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="https://belinha-website.herokuapp.com/#comandos"
+            style="transition: all 0.35s ease-in-out"><i class="fa fa-terminal"></i> Comandos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="https://belinha-website.herokuapp.com/#suporte"
+            style="transition: all 0.35s ease-in-out"><i class="fab fa-discord"></i> Suporte</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      <% if(!req.session.bearer_token) { %>
+        <li class="nav-item">
+          <a class="nav-link active" href="/login" aria-current="page" style="transition: all 0.35s ease-in-out"><i
+              class="fas fa-sign-in-alt"></i> login</a>
+        </li>
+        <% } %>
+          <% if(req.session.bearer_token) {%>
             <li class="nav-item">
-              <a class="nav-link active" href="/login" aria-current="page"
-                style="transition: all 0.35s ease-in-out"><i class="fas fa-sign-in-alt"></i> login</a>
+              <a class="nav-link active" aria-current="page"
+                style="transition: all 0.35s ease-in-out; vertical-align:middle;"><i class="fas fa-coins"></i> <%= data.money || 0 %></a>
             </li>
-          </ul>
-          <% } %>
-            <% if(req.session.bearer_token) {%>
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                  <a class="nav-link active" href="/dashboard" aria-current="page"
-                    style="transition: all 0.35s ease-in-out">
-                    <img src=<%=`https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.png?size=256`%>
-                    style=" width: 40px; height: 40px; top: 8px; border-radius:
-                    100%;"> <%= json.username %>
-                  </a>
-                </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/dashboard" aria-current="page"
+                style="transition: all 0.35s ease-in-out">
+                <img src=<%=`https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.png?size=256`%>
+                style=" width: 25px; top: 8px; border-radius:
+                100%;"> <%= json.username %>
+              </a>
+            </li>
+            <% } %>
               </ul>
-              <% } %>
-                <div class="nav-item navbar-nav"></div>
-      </div>
+              <div class="nav-item navbar-nav"></div>
     </div>
-  </nav>
+  </div>
+</nav>

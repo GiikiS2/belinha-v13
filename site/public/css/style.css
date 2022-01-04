@@ -625,7 +625,7 @@ a {
     width: 140px;
     border-radius: 10px;
     background-color: rgba(244, 243, 255, 0.569);
-    transition: all 0.2s;
+    transition: all 0.5s;
 }
 
 .right {
@@ -670,7 +670,7 @@ a {
 }
 
 .server:hover {
-    box-shadow: 0 0px 25px #04002c81;
+    box-shadow: 0 0px 25px #04002cc0;
 }
 
 .server-name {
