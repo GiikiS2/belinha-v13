@@ -94,8 +94,13 @@ app.get("/login", (req, res) => {
         `&response_type=code&scope=identify%20guilds`)
 });
 
-app.get("*", function(req, res) {
-    res.render("../site/views/404", {req});
+app.get("*", async function(req, res) {
+    const user = await fetch(`https://discord.com/api/users/@me`, {
+        headers: { Authorization: `Bearer ${req.session.bearer_token}` },
+    });
+    const json = await user.json();
+
+    res.render("../site/views/404", {req, json});
 });
 
 const server = app.listen(process.env.PORT || 3000, () => {

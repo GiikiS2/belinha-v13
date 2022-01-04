@@ -644,7 +644,7 @@ a {
     max-height: auto;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 800px) {
     .sidebar a {display: none;}
     .sidebar hr {display: none;}
     .sidebar a.hamburguer {display: block;}
@@ -652,7 +652,7 @@ a {
     .sidebar .menu-name {display: none;}
   }
 
-@media (max-width: 500px) {
+@media (max-width: 800px) {
     .responsive {position: relative;}
     .responsive a {display: block;}
     .responsive hr {display: block;}
@@ -687,7 +687,7 @@ a {
     height: auto;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 800px) {
     .server{
         width: 45%;
     }

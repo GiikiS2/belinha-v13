@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Discord = require('discord.js');
  
-mongoose.connect(`mongodb+srv://${process.env['db']}@belinhacluster.fiqdu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
+mongoose.connect(process.env['MONGODB_URI'], { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
   console.log('💸│database economica Conectado com sucesso! 👌')
 }) 
 
