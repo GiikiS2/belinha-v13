@@ -18,6 +18,11 @@ client.login(process.env['TOKEN']);
 
 
 client.on("ready", () => {
+  client.guilds.cache.forEach(server => {
+    server.commands.fetch()
+    .then(commands => console.log(`Fetched ${commands.size} commands`))
+    .catch(console.error);
+  })
   let activities = [
     `latindo.exe 💻`,
     `b*help 🙋`,
