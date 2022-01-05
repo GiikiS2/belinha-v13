@@ -88,7 +88,7 @@ app.get("/profile", async function(req, res) {
     });
     const json = await userj.json();
     let data = await pdb.User.findOne({userID: id})
-    if(!data) return await pdb.User.create({userID: id})
+    if(!data) return await pdb.User.create({userID: id}).then(res.redirect(`/profile?id${json.id}`))
     let user = cliente.users.cache.get(id)
     if(!user) return res.send({erro: 'usuario invalido'})
 
