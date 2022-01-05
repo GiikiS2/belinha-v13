@@ -18,15 +18,24 @@ client.login(process.env['TOKEN']);
 
 
 client.on("ready", () => {
-  client.guilds.cache.forEach(server => {
-    server.commands.fetch()
-    .then( (command) => {
-      console.log(`Fetched command ${command.name}`)
-      // further delete it like so:
-      command.delete()
-      console.log(`Deleted command ${command.name}`)
-      }).catch(console.error);
-  })
+
+const { REST } = require('@discordjs/rest');
+const { Routes } = require('discord-api-types/v9');
+
+const token = process.env.TOKEN;
+const clientId = process.env.clientid;
+    
+const rest = new REST({ version: '9' }).setToken(token);
+rest.get(Routes.applicationCommands(clientId))
+    .then(data => {
+        const promises = [];
+        for (const command of data) {
+            const deleteUrl = `${Routes.applicationCommands(clientId)}/${command.id}`;
+            promises.push(rest.delete(deleteUrl));
+        }
+        return Promise.all(promises);
+    })
+    
   let activities = [
     `latindo.exe 💻`,
     `b*help 🙋`,
@@ -40,7 +49,7 @@ client.on("ready", () => {
     .setStatus("online")
   console.log('conectado' + ` Node.js ${process.version}`)
   console.log(`🔗│${client.user.username} esta online Online! em ${client.guilds.cache.size} servidores! 😄`.underline.red)
-});
+})
 
 client.on("guildMemberAdd", async (member) => {
   const welcomemsg = require('./misc/welcome.js')
