@@ -91,12 +91,14 @@ app.get("/profile", async function(req, res) {
         headers: { Authorization: `Bearer ${req.session.bearer_token}` },
     });
     const json = await userj.json();
-    let data = await pdb.User.findOne({userID: id})
-    if(!data) return await pdb.User.create({userID: id}).then(res.redirect(`/profile?id${json.id}`))
+    let puser = await pdb.User.findOne({userID: id})
+    if(!puser) return await pdb.User.create({userID: id}).then(res.redirect(`/profile?id${json.id}`))
+    let data = await pdb.User.findOne({userID: json.id})
+    if(!data) return await pdb.User.create({userID: json.id}).then(res.redirect(`/profile?id${json.id}`))
     let user = cliente.users.cache.get(id)
     if(!user) return res.send({erro: 'usuario invalido'})
 
-    res.render("../site/views/profile", { json, id, data, cliente, req, user });
+    res.render("../site/views/profile", { json, puser, id, data, cliente, req, user });
 });
 
 app.get("/api/welcome", function(req, res) {

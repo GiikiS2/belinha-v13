@@ -58,7 +58,7 @@
                             #ffffffaa 80%,
                             rgba(255, 255, 255, 0) 100%
                           ),
-                          url(<%=data.profilebanner%>);">
+                          url(<%=puser.profilebanner%>);">
                             <div class="adjust">
                                 <img src=<%=user.avatarURL({ dynamic: true, format: "png" , size: 1024 })
                                     || 'https://cdn.discordapp.com/embed/avatars/5.png?size=1024' %>
@@ -74,22 +74,22 @@
                                     </span>
                             </div>
                             <div class="footer-modal" style="margin: 0px; text-align: left;">
-                                <% let valorc='ninguem' ; if(data.marry !=='noone' )
-                                    valorc=cliente.users.cache.get(data.marry)?.username %>
+                                <% let valorc='ninguem' ; if(puser.marry !=='noone' )
+                                    valorc=cliente.users.cache.get(puser.marry)?.username %>
                                     <div style="float: left">
                                         <p class="p-item"><i class="fas fa-hand-holding-heart"></i>
                                             <%= valorc || 'ninguem' %>
                                         </p>
-                                        <p class="p-item"><i class="fas fa-coins"></i> R2coins: <%= data.money %>
+                                        <p class="p-item"><i class="fas fa-coins"></i> R2coins: <%= puser.money %>
                                         </p>
                                     </div>
                                     <div style="float: right; text-align: right;">
-                                        <p class="p-item"><i class="fas fa-star"></i> Karma: <%= data.karma %>
+                                        <p class="p-item"><i class="fas fa-star"></i> Karma: <%= puser.karma %>
                                         </p>
-                                        <p class="p-item"><i class="fa-solid fa-house"></i> Casa: <%= data.iglut %>
+                                        <p class="p-item"><i class="fa-solid fa-house"></i> Casa: <%= puser.iglut %>
                                         </p>
                                     </div>
-                                    <% if(data.pufflet !=='noinfo' ) { %>
+                                    <% if(puser.pufflet !=='noinfo' ) { %>
                                         <div>
                                             <span class="catp" style="font-size: 20px;"> Pet: </span>
                                             <div style="float: left">
@@ -99,14 +99,14 @@
                                                 <p class="p-item"><i class="fas fa-coins"></i> Tipo:
                                                 </p>
                                             </div>
-                                            <% let nome = "não tem"; if(data.pufflen !== 'noname') nome = data.pufflen %>
+                                            <% let nome = "não tem"; if(puser.pufflen !== 'noname') nome = puser.pufflen %>
                                             <div style="float: right; text-align: right;">
                                                 <p class="p-item"> <%= nome %>
                                                 </p>
-                                                <p class="p-item"> <%= data.pufflet %>
+                                                <p class="p-item"> <%= puser.pufflet %>
                                                 </p>
                                             </div>
-                                            <img class="pet-p" src=<%=data.puffleimg %> >
+                                            <img class="pet-p" src=<%=puser.puffleimg %> >
                                         </div>
                                         <% } %>
                             </div>
