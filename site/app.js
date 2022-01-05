@@ -8,6 +8,7 @@ let { categorias, common } = require("./backend.js");
 const FormData = require("form-data");
 const fetch = require("node-fetch");
 let pets = require("../misc/pets.json");
+let casas = require("../misc/casas.json");
 app.use(require("express-session")(config.session));
 
 app.set("view engine", "ejs");
@@ -75,7 +76,7 @@ app.get("/shop", async function(req, res) {
     if(!data)await pdb.User.create({userID: json.id})
     const { id } = req.query;
 
-    res.render("../site/views/shop", { json, pets, id, data, req });
+    res.render("../site/views/shop", { json, pets, casas, id, data, req });
 });
 
 app.get("/profile", async function(req, res) {

@@ -103,7 +103,23 @@
                                 }
                             </script>
                             <% }) %>
-                                <% } %>
+                                <% } else if(id === "casa") { %>
+                                    <h2>Casas</h2>
+                                    <% casas.forEach(casa=> { %>
+                                    <a onclick="openMod(`myModal-<%= casa.alt %>`)">
+                                        <div class="item-shop">
+                                            <img class="img-shop"
+                                                src=<%=`https://belinha-website.herokuapp.com/assets/pets/${casa.alt}.png` %>
+                                            >
+                                            <div class="name-shop" style="border-top:4px solid #ec27ff">
+                                                <%= casa.nome %>
+                                                    <div class="preço"><i class="fas fa-coins"></i>
+                                                        <%= casa.preço %>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <% })} %>
 
 
 

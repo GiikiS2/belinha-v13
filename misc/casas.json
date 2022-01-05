@@ -1,0 +1,11 @@
+[
+    {
+        "nome": "basica", "preço": "100", "alt": "basica"
+    },
+    {
+        "nome": "iglu cockatiel", "preço": "2000", "alt": "iglu_cockatiel"
+    },
+    {
+        "nome": "iglu minecraft", "preço": "5000", "alt": "iglu_minecraft"
+    }
+]
