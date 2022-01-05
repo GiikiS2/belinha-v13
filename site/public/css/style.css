@@ -867,10 +867,11 @@ a {
 }
 
 .footer-modal {
+  padding: 5px;
   border-radius: 0px 0px 10px 10px;
-  background-color: rgba(0, 0, 0, 0.227);
+  background-color: rgb(255, 255, 255);
   font-family: "Fredoka One", cursive;
-  color: #fafafa;
+  color: #00000085;
   text-align: center;
   word-wrap: break-word;
   overflow: auto;
@@ -901,37 +902,29 @@ a {
 }
 
 .pcard {
-  background-color: #242421;
+  box-shadow: 0 0px 25px #04002c44;
+  background-color: #ffffff;
   width: 250px;
   background-repeat: no-repeat;
   width: 400px;
   border-radius: 10px;
+  transition: all 0.5s;
+}
+
+.pcard:hover{
+  box-shadow: 0 0px 25px #04002c96;
 }
 
 .adjust {
   padding: 16px;
 }
 
-.text-white {
+.text {
+  color: rgb(0, 0, 0);
   font-size: 16px;
   margin-top: 10px;
   font-weight: 500;
   margin: 10px;
-}
-.second {
-  padding: 9px;
-  padding-right: 0px;
-  background-color: #2f3136;
-  width: 250;
-}
-
-.third {
-  padding: 9px;
-  padding-right: 0px;
-  background-color: #7289da;
-  width: 250;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
 }
 
 .tag {
@@ -942,17 +935,11 @@ a {
   font-size: 12px;
 }
 
-.lol {
-  color: #ffffff79;
-  margin: 5px;
-  font-family: "Fredoka One", cursive;
-}
-
 .perfil-sec {
   border-radius: 0px 0px 10px 10px;
   background-color: rgba(0, 0, 0, 0.227);
   font-family: "Fredoka One", cursive;
-  color: #fafafa;
+  color: #000000;
   text-align: center;
   word-wrap: break-word;
   overflow: auto;
@@ -969,7 +956,7 @@ a {
   font-size: 16px;
   line-height: 20px;
   font-weight: 600;
-  color: #72767d;
+  color: #000000bd;
   transition: all 0.5s ease-in-out;
   word-wrap: break-word;
   overflow: hidden;
@@ -997,7 +984,7 @@ a {
   font-family: "Fredoka One", cursive;
   text-transform: uppercase;
   font-size: 10px;
-  color: #ffffff75;
+  color: #000000c6;
   text-align: center;
   display: flex;
   flex-direction: row;
@@ -1026,4 +1013,9 @@ a {
   .catp {
     margin-top: 140px;
   }
+}
+
+.container{
+  margin: 10px;
+  margin-bottom: 10px;
 }

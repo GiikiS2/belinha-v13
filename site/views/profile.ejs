@@ -54,16 +54,16 @@
 
                         <div class="pcard" style="background-image: linear-gradient(
                             0deg,
-                            #181817 50%,
-                            #181817aa 80%,
-                            rgba(238, 234, 255, 0) 100%
+                            #ffffff 50%,
+                            #ffffffaa 80%,
+                            rgba(255, 255, 255, 0) 100%
                           ),
                           url(<%=data.profilebanner%>);">
                             <div class="adjust">
                                 <img src=<%=user.avatarURL({ dynamic: true, format: "png" , size: 1024 })
                                     || 'https://cdn.discordapp.com/embed/avatars/5.png?size=1024' %>
                                 alt="profile img" class="rounded-circle" width="80px" height="80px">
-                                <h1 class="text-white">
+                                <h1 class="text">
                                     <%= user.username %> <img
                                             src="https://cdn.discordapp.com/attachments/591157769181069332/752622240486522943/check.png"
                                             height="16" width="16">
