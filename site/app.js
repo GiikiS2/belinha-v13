@@ -9,6 +9,7 @@ const FormData = require("form-data");
 const fetch = require("node-fetch");
 let pets = require("../misc/pets.json");
 let casas = require("../misc/casas.json");
+let banners = require("../misc/banners.json");
 app.use(require("express-session")(config.session));
 
 app.set("view engine", "ejs");
@@ -68,15 +69,17 @@ app.get("/pet", async function(req, res) {
 app.get("/shop", async function(req, res) {
     if (!req.session.bearer_token) return res.redirect("/");
 
+    const { id } = req.query;
+    if(!id) return res.send({erro: 'forneça um id'})
     const user = await fetch(`https://discord.com/api/users/@me`, {
         headers: { Authorization: `Bearer ${req.session.bearer_token}` },
     });
     const json = await user.json();
     let data = await pdb.User.findOne({userID: json.id})
     if(!data)await pdb.User.create({userID: json.id})
-    const { id } = req.query;
+    
 
-    res.render("../site/views/shop", { json, pets, casas, id, data, req });
+    res.render("../site/views/shop", { json, banners, pets, casas, id, data, req });
 });
 
 app.get("/profile", async function(req, res) {

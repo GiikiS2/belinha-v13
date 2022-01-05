@@ -1,0 +1,20 @@
+[
+    {
+        "nome": "sunset", "preço": "10000", "alt": "sunset"
+    },
+    {
+        "nome": "beach wumpus", "preço": "20000", "alt": "beach_wumpus"
+    },
+    {
+        "nome": "original", "preço": "5000", "alt": "original"
+    },
+    {
+        "nome": "clouds", "preço": "4000", "alt": "clouds"
+    },
+    {
+        "nome": "silence", "preço": "2000", "alt": "silence"
+    },
+    {
+        "nome": "waveset", "preço": "5000", "alt": "waveset"
+    }
+]
