@@ -20,8 +20,12 @@ client.login(process.env['TOKEN']);
 client.on("ready", () => {
   client.guilds.cache.forEach(server => {
     server.commands.fetch()
-    .then(commands => console.log(`Fetched ${commands.size} commands`))
-    .catch(console.error);
+    .then( (command) => {
+      console.log(`Fetched command ${command.name}`)
+      // further delete it like so:
+      command.delete()
+      console.log(`Deleted command ${command.name}`)
+      }).catch(console.error);
   })
   let activities = [
     `latindo.exe 💻`,
