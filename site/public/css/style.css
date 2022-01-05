@@ -906,6 +906,7 @@ a {
   background-color: #ffffff;
   width: 250px;
   background-repeat: no-repeat;
+  background-size: contain;
   width: 400px;
   border-radius: 10px;
   transition: all 0.5s;

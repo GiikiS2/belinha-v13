@@ -79,7 +79,7 @@ app.get("/shop", async function(req, res) {
     if(!data)await pdb.User.create({userID: json.id})
     
 
-    res.render("../site/views/shop", { json, banners, pets, casas, id, data, req, res });
+    res.render("../site/views/shop", { json, pdb, banners, pets, casas, id, data, req, res });
 });
 
 app.get("/profile", async function(req, res) {

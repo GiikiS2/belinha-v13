@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
-    "@discordjs/rest": "*",
     "axios": "^0.24.0",
     "canvas": "^2.8.0",
     "colors": "^1.4.0",
