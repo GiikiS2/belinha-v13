@@ -78,6 +78,23 @@ app.get("/shop", async function(req, res) {
     res.render("../site/views/shop", { json, pets, id, data, req });
 });
 
+app.get("/profile", async function(req, res) {
+    if (!req.session.bearer_token) return res.redirect("/");
+    const { id } = req.query;
+    if(!id) return res.send({erro: 'forneça um id'})
+
+    const userj = await fetch(`https://discord.com/api/users/@me`, {
+        headers: { Authorization: `Bearer ${req.session.bearer_token}` },
+    });
+    const json = await userj.json();
+    let data = await pdb.User.findOne({userID: id})
+    if(!data) return await pdb.User.create({userID: id})
+    let user = cliente.users.cache.get(id)
+    if(!user) return res.send({erro: 'usuario invalido'})
+
+    res.render("../site/views/profile", { json, id, data, cliente, req, user });
+});
+
 app.get("/api/welcome", function(req, res) {
     require("../site/api/welcome.js").run(req, res);
 });

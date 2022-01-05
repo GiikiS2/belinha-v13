@@ -895,9 +895,136 @@ a {
   transition: all 0.5s ease-in-out;
 }
 
+@media screen and (max-width: 800px) {
+  .modal-content {
+    width: 90% !important;
+  }
+}
+
+.pcard {
+  background-color: #242421;
+  width: 250px;
+  background-repeat: no-repeat;
+  width: 400px;
+  border-radius: 10px;
+}
+
+.adjust {
+  padding: 16px;
+}
+
+.text-white {
+  font-size: 16px;
+  margin-top: 10px;
+  font-weight: 500;
+  margin: 10px;
+}
+.second {
+  padding: 9px;
+  padding-right: 0px;
+  background-color: #2f3136;
+  width: 250;
+}
+
+.third {
+  padding: 9px;
+  padding-right: 0px;
+  background-color: #7289da;
+  width: 250;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.tag {
+  background: rgb(255, 45, 108);
+  color: #ffffffaf;
+  border-radius: 5px;
+  padding: 2px;
+  font-size: 12px;
+}
+
+.lol {
+  color: #ffffff79;
+  margin: 5px;
+  font-family: "Fredoka One", cursive;
+}
+
+.perfil-sec {
+  border-radius: 0px 0px 10px 10px;
+  background-color: rgba(0, 0, 0, 0.227);
+  font-family: "Fredoka One", cursive;
+  color: #fafafa;
+  text-align: center;
+  word-wrap: break-word;
+  overflow: auto;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 600px;
+}
+
+.p-item {
+  padding: 6px 10px;
+  margin-bottom: 2px;
+  font-family: Lato, Helvetica Neue, Helvetica, Arial, sans-serif;
+  border-radius: 10px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  color: #72767d;
+  transition: all 0.5s ease-in-out;
+  word-wrap: break-word;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.pet-p {
+  display: block;
+  margin: 0 auto;
+  object-fit: cover;
+  border-radius: 10px;
+  width: 250px;
+  height: auto;
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px;
+  margin-bottom: 5px;
+  border-color: rgba(255, 255, 255, 0.467);
+}
+
+.catp {
+  margin-top: 80px;
+  font-family: "Fredoka One", cursive;
+  text-transform: uppercase;
+  font-size: 10px;
+  color: #ffffff75;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.catp:before,
+.catp:after {
+  content: "";
+  flex: 1 1;
+  border-bottom: 1px solid;
+  margin: auto;
+}
+
+.catp:before {
+  margin-right: 3px;
+}
+
+.catp:after {
+  margin-left: 3px;
+}
 
 @media screen and (max-width: 800px) {
-    .modal-content {
-        width: 90% !important;
-    }
+  .pcard {
+    width: 78%;
   }
+  .catp {
+    margin-top: 140px;
+  }
+}
