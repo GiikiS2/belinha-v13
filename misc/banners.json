@@ -16,5 +16,14 @@
     },
     {
         "nome": "waveset", "preço": "5000", "alt": "waveset"
+    },
+    {
+        "nome": "nitro wumpus", "preço": "2000", "alt": "nitro_wumpus"
+    },
+    {
+        "nome": "matrix", "preço": "5000", "alt": "matrix"
+    },
+    {
+        "nome": "star sky", "preço": "1000", "alt": "star_sky"
     }
 ]
