@@ -777,10 +777,11 @@ a {
 
 .img-shop {
   display: block;
+  margin-left: auto;
+  margin-right: auto;
   object-fit: cover;
   border-radius: 10px 10px 0 0;
-  width: 180px;
-  height: 180px;
+  height: 182px;
 }
 
 .name-shop {
@@ -881,6 +882,7 @@ a {
 }
 
 .discord-btn {
+  border: none;
   margin: 10px !important;
   padding: 10px !important;
   margin-bottom: 2px;
@@ -1019,4 +1021,83 @@ a {
 .container{
   margin: 10px;
   margin-bottom: 10px;
+}
+
+.big-big {
+  text-align: center;
+  font-family: "Fredoka One", cursive;
+  color: #ff6cc2;
+}
+
+.imgm{
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  min-height: 120px;
+  width: auto;
+  margin: 15px;
+}
+
+@media screen and (max-width: 800px) {
+  .modal-content{
+    max-width: 350px;
+  }
+  .imgm{
+    max-height: 170px;
+  }
+}
+
+hr.rounded {
+  border-top: 8px solid #bbb;
+  border-radius: 5px;
+}
+
+.disabled{
+  background-color: rgb(109, 109, 109); cursor: default;
+}
+
+
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: rgb(43, 226, 135);
+  color: #fff;
+  text-align: center;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+  box-shadow: 0 0px 40px #04002c6b;
+  border-radius: 10px;
+  font-family: Lato, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
 }

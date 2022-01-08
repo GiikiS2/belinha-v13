@@ -4,7 +4,10 @@ let config = require("../config.json");
 var app = express();
 let client = require("../index.js");
 const cliente = client
-let { categorias, common } = require("./backend.js");
+let {
+    categorias,
+    common
+} = require("./backend.js");
 const FormData = require("form-data");
 const fetch = require("node-fetch");
 let pets = require("../misc/pets.json");
@@ -16,96 +19,210 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use("/css", express.static(__dirname + "/css"));
 app.use("/js", express.static(__dirname + "/js"));
+app.use(express.json())
+app.use(express.urlencoded({
+    extended: true
+}))
 
-app.get("/", async function(req, res) {
+app.get("/", async function (req, res) {
     const user = await fetch(`https://discord.com/api/users/@me`, {
-        headers: { Authorization: `Bearer ${req.session.bearer_token}` },
+        headers: {
+            Authorization: `Bearer ${req.session.bearer_token}`
+        },
     }); // Fetching user data
     const json = await user.json();
-    let data = await pdb.User.findOne({userID: json.id})
-    if(!data)await pdb.User.create({userID: json.id})
+    let data = await pdb.User.findOne({
+        userID: json.id
+    })
+    if (!data) await pdb.User.create({
+        userID: json.id
+    })
 
-    res.render("../site/views/home", { cliente, data, categorias, json, req });
+    res.render("../site/views/home", {
+        cliente,
+        data,
+        categorias,
+        json,
+        req
+    });
 });
 
-app.get("/dashboard", async function(req, res) {
+app.get("/dashboard", async function (req, res) {
     if (!req.session.bearer_token) return res.redirect("/");
 
 
     const user = await fetch(`https://discord.com/api/users/@me`, {
-        headers: { Authorization: `Bearer ${req.session.bearer_token}` },
+        headers: {
+            Authorization: `Bearer ${req.session.bearer_token}`
+        },
     });
     const guilds = await fetch(`https://discord.com/api/users/@me/guilds`, {
-        headers: { Authorization: `Bearer ${req.session.bearer_token}` },
+        headers: {
+            Authorization: `Bearer ${req.session.bearer_token}`
+        },
     });
     const json = await user.json();
     const guildas = await guilds.json();
 
     const Guilds = Array.from(cliente.guilds.cache);
-    let data = await pdb.User.findOne({userID: json.id})
-    if(!data)await pdb.User.create({userID: json.id})
+    let data = await pdb.User.findOne({
+        userID: json.id
+    })
+    if (!data) await pdb.User.create({
+        userID: json.id
+    })
 
     let permguild = Object.values(guildas).filter(
         (valor) => (valor.permissions & (1 << 3)) == 1 << 3
     );
 
     let mootguilds = permguild //Guilds.filter(value => permguild.includes(value.id));
-    res.render("../site/views/dashboard", { cliente, data, json, mootguilds, req });
+    res.render("../site/views/dashboard", {
+        cliente,
+        data,
+        json,
+        mootguilds,
+        req
+    });
 });
 
-app.get("/pet", async function(req, res) {
+app.get("/pet", async function (req, res) {
     if (!req.session.bearer_token) return res.redirect("/");
 
     const user = await fetch(`https://discord.com/api/users/@me`, {
-        headers: { Authorization: `Bearer ${req.session.bearer_token}` },
+        headers: {
+            Authorization: `Bearer ${req.session.bearer_token}`
+        },
     });
     const json = await user.json();
-    let data = await pdb.User.findOne({userID: json.id})
-    if(!data)await pdb.User.create({userID: json.id})
+    let data = await pdb.User.findOne({
+        userID: json.id
+    })
+    if (!data) await pdb.User.create({
+        userID: json.id
+    })
 
-    res.render("../site/views/pet", { json, data, req });
+    res.render("../site/views/pet", {
+        json,
+        data,
+        req
+    });
 });
 
-app.get("/shop", async function(req, res) {
+app.get("/shop", async function (req, res) {
     if (!req.session.bearer_token) return res.redirect("/");
 
-    const { id } = req.query;
-    if(!id) return res.send({erro: 'forneça um id'})
     const user = await fetch(`https://discord.com/api/users/@me`, {
-        headers: { Authorization: `Bearer ${req.session.bearer_token}` },
+        headers: {
+            Authorization: `Bearer ${req.session.bearer_token}`
+        },
     });
     const json = await user.json();
-    let data = await pdb.User.findOne({userID: json.id})
-    if(!data)await pdb.User.create({userID: json.id})
-    
+    let data = await pdb.User.findOne({
+        userID: json.id
+    })
+    if (!data) await pdb.User.create({
+        userID: json.id
+    })
 
-    res.render("../site/views/shop", { json, pdb, banners, pets, casas, id, data, req, res });
+    let error
+
+    res.render("../site/views/shop", {
+        json,
+        banners,
+        pets,
+        casas,
+        data,
+        req,
+        error
+    });
 });
 
-app.get("/profile", async function(req, res) {
+app.post('/shop', async function (req, res, next) {
+    const user = await fetch(`https://discord.com/api/users/@me`, {
+        headers: {
+            Authorization: `Bearer ${req.session.bearer_token}`
+        },
+    });
+    const json = await user.json();
+    let data = await pdb.User.findOne({
+        userID: json.id
+    })
+    let item = JSON.parse(req.body.item)
+
+    if(req.body.tipo === 'casa'){
+        await pdb.User.findOneAndUpdate( 
+            { userID: json.id },
+            { igluimg: `https://belinha-website.herokuapp.com/assets/casa/${item.alt}.png`, iglut: item.nome } );
+            data.money -= item.preço;
+            data.save(); 
+    }
+    if(req.body.tipo === 'pet'){
+        await pdb.User.findOneAndUpdate( 
+            { userID: json.id },
+            { puffleimg: `https://belinha-website.herokuapp.com/assets/pet/${item.alt}.png`, pufflen: 'noname', pufflet: item.tipo } );
+            data.money -= item.preço;
+            data.save(); 
+    }
+    if(req.body.tipo === 'banner'){
+        await pdb.User.findOneAndUpdate( 
+            { userID: json.id },
+            { profilebanner: `https://belinha-website.herokuapp.com/assets/banner/${item.alt}.png` } );
+            data.money -= item.preço;
+            data.save(); 
+    }
+
+
+});
+
+app.get("/profile", async function (req, res) {
     if (!req.session.bearer_token) return res.redirect("/");
-    const { id } = req.query;
-    if(!id) return res.send({erro: 'forneça um id'})
+    const {
+        id
+    } = req.query;
+    if (!id) return res.send({
+        erro: 'forneça um id'
+    })
 
     const userj = await fetch(`https://discord.com/api/users/@me`, {
-        headers: { Authorization: `Bearer ${req.session.bearer_token}` },
+        headers: {
+            Authorization: `Bearer ${req.session.bearer_token}`
+        },
     });
     const json = await userj.json();
-    let puser = await pdb.User.findOne({userID: id})
-    if(!puser) return await pdb.User.create({userID: id}).then(res.redirect(`/profile?id${json.id}`))
-    let data = await pdb.User.findOne({userID: json.id})
-    if(!data) return await pdb.User.create({userID: json.id}).then(res.redirect(`/profile?id${json.id}`))
+    let puser = await pdb.User.findOne({
+        userID: id
+    })
+    if (!puser) return await pdb.User.create({
+        userID: id
+    }).then(res.redirect(`/profile?id${json.id}`))
+    let data = await pdb.User.findOne({
+        userID: json.id
+    })
+    if (!data) return await pdb.User.create({
+        userID: json.id
+    }).then(res.redirect(`/profile?id${json.id}`))
     let user = cliente.users.cache.get(id)
-    if(!user) return res.send({erro: 'usuario invalido'})
+    if (!user) return res.send({
+        erro: 'usuario invalido'
+    })
 
-    res.render("../site/views/profile", { json, puser, id, data, cliente, req, user });
+    res.render("../site/views/profile", {
+        json,
+        puser,
+        id,
+        data,
+        cliente,
+        req,
+        user
+    });
 });
 
-app.get("/api/welcome", function(req, res) {
+app.get("/api/welcome", function (req, res) {
     require("../site/api/welcome.js").run(req, res);
 });
 
-app.get("/login/callback", async(req, resp) => {
+app.get("/login/callback", async (req, resp) => {
     const accessCode = req.query.code;
     if (!accessCode) return resp.send("No access code specified");
 
@@ -137,7 +254,7 @@ app.get("/login", (req, res) => {
         `&response_type=code&scope=identify%20guilds`)
 });
 
-app.get("/logout", async(req, resp) => {
+app.get("/logout", async (req, resp) => {
     if (!req.session.bearer_token) return resp.redirect("/");
 
     const data = new FormData();
@@ -156,15 +273,25 @@ app.get("/logout", async(req, resp) => {
     resp.redirect("/");
 });
 
-app.get("*", async function(req, res) {
+app.get("*", async function (req, res) {
     const user = await fetch(`https://discord.com/api/users/@me`, {
-        headers: { Authorization: `Bearer ${req.session.bearer_token}` },
+        headers: {
+            Authorization: `Bearer ${req.session.bearer_token}`
+        },
     });
     const json = await user.json();
-    let data = await pdb.User.findOne({userID: json.id})
-    if(!data)await pdb.User.create({userID: json.id})
+    let data = await pdb.User.findOne({
+        userID: json.id
+    })
+    if (!data) await pdb.User.create({
+        userID: json.id
+    })
 
-    res.render("../site/views/404", {req, data, json});
+    res.render("../site/views/404", {
+        req,
+        data,
+        json
+    });
 });
 
 const server = app.listen(process.env.PORT || 3000, () => {
