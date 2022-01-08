@@ -111,6 +111,12 @@ app.get("/pet", async function (req, res) {
 
 app.get("/shop", async function (req, res) {
     if (!req.session.bearer_token) return res.redirect("/");
+    const {
+        id
+    } = req.query;
+    if (!id) return res.send({
+        erro: 'forneça um id'
+    })
 
     const user = await fetch(`https://discord.com/api/users/@me`, {
         headers: {
@@ -125,8 +131,6 @@ app.get("/shop", async function (req, res) {
         userID: json.id
     })
 
-    let error
-
     res.render("../site/views/shop", {
         json,
         banners,
@@ -134,7 +138,7 @@ app.get("/shop", async function (req, res) {
         casas,
         data,
         req,
-        error
+        id
     });
 });
 
@@ -150,26 +154,35 @@ app.post('/shop', async function (req, res, next) {
     })
     let item = JSON.parse(req.body.item)
 
-    if(req.body.tipo === 'casa'){
-        await pdb.User.findOneAndUpdate( 
-            { userID: json.id },
-            { igluimg: `https://belinha-website.herokuapp.com/assets/casa/${item.alt}.png`, iglut: item.nome } );
-            data.money -= item.preço;
-            data.save(); 
+    if (req.body.tipo === 'casa') {
+        await pdb.User.findOneAndUpdate({
+            userID: json.id
+        }, {
+            igluimg: `https://belinha-website.herokuapp.com/assets/casa/${item.alt}.png`,
+            iglut: item.nome
+        });
+        data.money -= item.preço;
+        data.save();
     }
-    if(req.body.tipo === 'pet'){
-        await pdb.User.findOneAndUpdate( 
-            { userID: json.id },
-            { puffleimg: `https://belinha-website.herokuapp.com/assets/pet/${item.alt}.png`, pufflen: 'noname', pufflet: item.tipo } );
-            data.money -= item.preço;
-            data.save(); 
+    if (req.body.tipo === 'pet') {
+        await pdb.User.findOneAndUpdate({
+            userID: json.id
+        }, {
+            puffleimg: `https://belinha-website.herokuapp.com/assets/pet/${item.alt}.png`,
+            pufflen: 'noname',
+            pufflet: item.tipo
+        });
+        data.money -= item.preço;
+        data.save();
     }
-    if(req.body.tipo === 'banner'){
-        await pdb.User.findOneAndUpdate( 
-            { userID: json.id },
-            { profilebanner: `https://belinha-website.herokuapp.com/assets/banner/${item.alt}.png` } );
-            data.money -= item.preço;
-            data.save(); 
+    if (req.body.tipo === 'banner') {
+        await pdb.User.findOneAndUpdate({
+            userID: json.id
+        }, {
+            profilebanner: `https://belinha-website.herokuapp.com/assets/banner/${item.alt}.png`
+        });
+        data.money -= item.preço;
+        data.save();
     }
 
 

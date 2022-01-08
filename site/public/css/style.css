@@ -931,10 +931,11 @@ a {
 }
 
 .tag {
+  margin: 5px;
   background: rgb(255, 45, 108);
   color: #ffffffaf;
-  border-radius: 5px;
-  padding: 2px;
+  border-radius: 10px;
+  padding: 4px;
   font-size: 12px;
 }
 

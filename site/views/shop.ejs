@@ -60,8 +60,9 @@
         <%- include('partials/navbar.ejs') %>
 
         <div class="meio">
-            <h2 class="sec-t" id="pet">Pets</h2>
-            <div class="seção" id="pet">
+            <% if(id === "pet") {%>
+            <section id="pet">
+                <h2 class="sec-t" id="pet">Pets</h2>
                 <% pets.forEach(pet=> { %>
 
                 <div id="myModal-<%= pet.alt%>" class="modal">
@@ -75,7 +76,7 @@
                         </h2>
                         <p style="padding: 10px; float: left;">
                             <img class='imgm' src=<%=`https://belinha-website.herokuapp.com/assets/pets/${pet.alt}.png`
-                                                            %> style="width: 40%; float: right">
+                                                                %> style="width: 40%; float: right">
                             Você esta prestes a adotar este pet, caso já tenha um, ele sera substituído
                         </p>
 
@@ -119,10 +120,11 @@
                     </div>
                 </a>
                 <% }) %>
-            </div>
+            </section>
+            <% } else if(id === "casa") {%>
+            <section id="casa">
+                <h2 class="sec-t" id="casa">Casas</h2>
 
-
-            <div class="seção" id="casa">
                 <% casas.forEach(casa=> { %>
                 <div id="myModal-<%= casa.alt%>" class="modal">
 
@@ -135,7 +137,7 @@
                         </h2>
                         <p style="padding: 10px; float: left;">
                             <img class='imgm' src=<%=`https://belinha-website.herokuapp.com/assets/casa/${casa.alt}.png`
-                                                        %> style="width: 40%; float: right">
+                                                            %> style="width: 40%; float: right">
                             Você esta prestes a comprar esta casa, caso já tenha uma, ela
                             sera
                             substituída
@@ -167,7 +169,7 @@
                 <a onclick="openMod(`myModal-<%= casa.alt %>`)">
                     <div class="item-shop">
                         <img class="img-shop" src=<%=`https://belinha-website.herokuapp.com/assets/casa/${casa.alt}.png`
-                                                    %>>
+                                                        %>>
                         <div class="name-shop" style="border-top:4px solid #ec27ff">
                             <%= casa.nome %>
                             <div class="preço"><i class="fas fa-coins"></i>
@@ -177,66 +179,71 @@
                     </div>
                 </a>
                 <% }) %>
+            </section>
+            <% } else if(id === "banner") {%>
+            <section id="banner">
+                <h2 class="sec-t" id="banner">Banners</h2>
+                <% banners.forEach(banner=> {%>
+                <div id="myModal-<%= banner.alt%>" class="modal">
 
+                    <form action="/shop" method="POST" />
+                    <input type="hidden" name="tipo" value="banner" />
+                    <input type="hidden" name="item" value="<%= JSON.stringify(banner) %>" />
+                    <div class="modal-content">
+                        <h2 style="padding: 10px;">
+                            <%= banner.nome %>
+                        </h2>
+                        <p style="padding: 10px;">
+                            Você esta prestes a comprar este banner, caso já tenha
+                            um,
+                            ele sera substituído
+                        </p>
+                        <img class='imgm'
+                            src=<%=`https://belinha-website.herokuapp.com/assets/banner/${banner.alt}.png`%>>
 
+                        <div class="footer-modal">
 
-                <div class="seção" id="banner">
-                    <% banners.forEach(banner=> {%>
-                    <div id="myModal-<%= banner.alt%>" class="modal">
-                        
-                        <form action="/shop" method="POST" />
-                        <input type="hidden" name="tipo" value="banner" />
-                        <input type="hidden" name="item" value="<%= JSON.stringify(banner) %>" />
-                        <div class="modal-content">
-                            <h2 style="padding: 10px;">
-                                <%= banner.nome %>
-                            </h2>
-                            <p style="padding: 10px;">
-                                Você esta prestes a comprar este banner, caso já tenha
-                                um,
-                                ele sera substituído
-                            </p>
-                            <img class='imgm'
-                                src=<%=`https://belinha-website.herokuapp.com/assets/banner/${banner.alt}.png`%>>
-
-                            <div class="footer-modal">
-
-                                <% if( data.money < banner.preço )  { %>
-                                <div class="discord-btn disabled" style="float: right;">
-                                    <i class="fas fa-shopping-basket"></i> Comprar
-                                </div>
-                                <% } else { %>
-                                <button type="submit" onclick="snackopen(); closeMod(`myModal-<%= banner.alt %>`)"
-                                    class="discord-btn" style="float: right;">
-                                    <i class="fas fa-shopping-basket"></i> Comprar
-                                </button>
-                                <% } %>
-
-                                <a onclick="closeMod(`myModal-<%= banner.alt %>`)" style="cursor:pointer">
-                                    <div class="discord-btn" style="background-color: rgb(255, 0, 47); float: right;">
-                                        <i class="fas fa-times"></i> Sair
-                                    </div>
-                                </a>
+                            <% if( data.money < banner.preço )  { %>
+                            <div class="discord-btn disabled" style="float: right;">
+                                <i class="fas fa-shopping-basket"></i> Comprar
                             </div>
+                            <% } else { %>
+                            <button type="submit" onclick="snackopen(); closeMod(`myModal-<%= banner.alt %>`)"
+                                class="discord-btn" style="float: right;">
+                                <i class="fas fa-shopping-basket"></i> Comprar
+                            </button>
+                            <% } %>
+
+                            <a onclick="closeMod(`myModal-<%= banner.alt %>`)" style="cursor:pointer">
+                                <div class="discord-btn" style="background-color: rgb(255, 0, 47); float: right;">
+                                    <i class="fas fa-times"></i> Sair
+                                </div>
+                            </a>
                         </div>
-                        </form>
                     </div>
-                    <a onclick="openMod(`myModal-<%= banner.alt %>`)">
-                        <div class="item-shop">
-                            <img class="img-shop" src=<%=`https://belinha-website.herokuapp.com/assets/banner/${banner.alt}.png`
-                                                            %>>
-                            <div class="name-shop" style="border-top:4px solid #ec27ff">
-                                <%= banner.nome %>
-                                <div class="preço"><i class="fas fa-coins"></i>
-                                    <%= banner.preço %>
-                                </div>
+                    </form>
+                </div>
+                <a onclick="openMod(`myModal-<%= banner.alt %>`)">
+                    <div class="item-shop">
+                        <img class="img-shop" src=<%=`https://belinha-website.herokuapp.com/assets/banner/${banner.alt}.png`
+                                                                %>>
+                        <div class="name-shop" style="border-top:4px solid #ec27ff">
+                            <%= banner.nome %>
+                            <div class="preço"><i class="fas fa-coins"></i>
+                                <%= banner.preço %>
                             </div>
                         </div>
-                    </a>
-                    <% }) %>
-                </div>
+                    </div>
+                </a>
+                <% }) %>
+            </section>
+            <% } else {%>
+            <h2> ID invalido </h2>
+            <img style="display: block; margin-left: auto; margin-right: auto; width: 50%;"
+                src="https://c.tenor.com/WAbZUbJ9CjoAAAAi/rascal-nothing-to-see-here.gif">
+            <% } %>
 
-            </div>
+        </div>
 </body>
 
 </html>
