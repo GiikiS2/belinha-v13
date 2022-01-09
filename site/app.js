@@ -54,7 +54,7 @@ app.get("/server", async function (req, res) {
         erro: 'forneça um id'
     })
     let server = cliente.guilds.cache.get(id)
-    if(!server) return res.redirect("/login");
+    if(!server) return res.redirect("https://discord.com/api/oauth2/authorize?client_id=757352173481885717&permissions=8&scope=bot");
 
     const user = await fetch(`https://discord.com/api/users/@me`, {
         headers: {
