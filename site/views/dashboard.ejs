@@ -51,7 +51,7 @@
         <a class="comando" style="color: #79174a93; font-size: 100%;"> Não há servidores. </a>
         <% } %>
       <% mootguilds.forEach((server)=> { %>
-        <a href="/server">
+        <a href=<%= `/server?id=${server.id}` %>>
           <div class="server">
             <img class="server-icon" <% if(server.icon===null ){ image='../assets/noicon.webp' } else { image=`
               https://cdn.discordapp.com/icons/${server.id}/${server.icon}.png?size=256` }%> src=

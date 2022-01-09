@@ -63,7 +63,7 @@ module.exports.run = async (client, message, args) => {
         `**Escolha uma categoria fornecida abaixo!** \n\n\n` +
         `> __**Entre para o servidor de suporte**([clica aqui](https://discord.com/invite/F7AWJZaYv8))__ \n` +
         `> __**Convide a Belinha para seu servidor**([clica aqui](https://discord.com/oauth2/authorize?client_id=757352173481885717&scope=bot&permissions=2147483647))__ \n` +
-        `> __**Site da Belinha**([clica aqui](http://belinha-website.herokuapp.com))__
+        `> __**Site da Belinha**([clica aqui](http://belinha.herokuapp.com))__
         caso precisa de mais ajuda, todos comandos estão documentados no site da belinha!`
     )
     .setThumbnail(client.user.displayAvatarURL());

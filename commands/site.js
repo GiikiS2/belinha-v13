@@ -11,7 +11,7 @@ module.exports.run = async (client, message, args) => {
 	.setLabel('Site da belinha!')
 	.setStyle('LINK')
 	.setEmoji('❤️')
-  .setURL('https://belinha-website.herokuapp.com')
+  .setURL('https://belinha.herokuapp.com')
 
 
 const row = new MessageActionRow()

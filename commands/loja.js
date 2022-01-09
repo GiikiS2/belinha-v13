@@ -157,7 +157,7 @@ module.exports.run = async (client, message, args) => {
                         );
                         await pdb.User.findOneAndUpdate(
                           { userID: message.author.id },
-                          { puffleimg: `https://belinha-website.herokuapp.com/assets/pets/${infopet.alt}.png` }
+                          { puffleimg: `https://belinha.herokuapp.com/assets/pets/${infopet.alt}.png` }
                         );
                         await pdb.User.findOneAndUpdate(
                           { userID: message.author.id },
@@ -170,7 +170,7 @@ module.exports.run = async (client, message, args) => {
                           .setTitle(
                             `🐕 **__| Você adotou um ${infopet.nome}!__**`
                           )
-                          .setImage(`https://belinha-website.herokuapp.com/assets/pets/${infopet.alt}.png`)
+                          .setImage(`https://belinha.herokuapp.com/assets/pets/${infopet.alt}.png`)
                           .setDescription(
                             "lembrando que você pode mudar o nome do pet com b*comando"
                           );
@@ -206,7 +206,7 @@ module.exports.run = async (client, message, args) => {
                 );
                 await pdb.User.findOneAndUpdate(
                   { userID: message.author.id },
-                  { puffleimg: `https://belinha-website.herokuapp.com/assets/pets/${infopet.alt}.png` }
+                  { puffleimg: `https://belinha.herokuapp.com/assets/pets/${infopet.alt}.png` }
                 );
                 await pdb.User.findOneAndUpdate(
                   { userID: message.author.id },
@@ -217,7 +217,7 @@ module.exports.run = async (client, message, args) => {
 
                 let embedno = new Discord.MessageEmbed()
                   .setTitle(`🐕 **__| Você adotou um ${infopet.nome}!__**`)
-                  .setImage(`https://belinha-website.herokuapp.com/assets/pets/${infopet.alt}.png`)
+                  .setImage(`https://belinha.herokuapp.com/assets/pets/${infopet.alt}.png`)
                   .setDescription(
                     "lembrando que você pode mudar o nome do pet com b*comando"
                   );

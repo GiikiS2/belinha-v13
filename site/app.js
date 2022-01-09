@@ -135,7 +135,7 @@ app.post('/shop', async function (req, res, next) {
         await pdb.User.findOneAndUpdate({
             userID: json.id
         }, {
-            igluimg: `https://belinha-website.herokuapp.com/assets/casa/${item.alt}.png`,
+            igluimg: `https://belinha.herokuapp.com/assets/casa/${item.alt}.png`,
             iglut: item.nome
         });
         data.money -= item.preço;
@@ -145,7 +145,7 @@ app.post('/shop', async function (req, res, next) {
         await pdb.User.findOneAndUpdate({
             userID: json.id
         }, {
-            puffleimg: `https://belinha-website.herokuapp.com/assets/pet/${item.alt}.png`,
+            puffleimg: `https://belinha.herokuapp.com/assets/pet/${item.alt}.png`,
             pufflen: 'noname',
             pufflet: item.tipo
         });
@@ -156,7 +156,7 @@ app.post('/shop', async function (req, res, next) {
         await pdb.User.findOneAndUpdate({
             userID: json.id
         }, {
-            profilebanner: `https://belinha-website.herokuapp.com/assets/banner/${item.alt}.png`
+            profilebanner: `https://belinha.herokuapp.com/assets/banner/${item.alt}.png`
         });
         data.money -= item.preço;
         data.save();
