@@ -178,7 +178,7 @@ app.post('/shop', async function (req, res, next) {
         await pdb.User.findOneAndUpdate({
             userID: json.id
         }, {
-            puffleimg: `https://belinha.herokuapp.com/assets/pet/${item.alt}.png`,
+            puffleimg: `https://belinha.herokuapp.com/assets/pets/${item.alt}.png`,
             pufflen: 'noname',
             pufflet: item.tipo
         });
