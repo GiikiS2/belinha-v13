@@ -46,96 +46,98 @@
     <script>
         var bg = new Image();   // Create new img element
         bg.src = "<%= puser.igluimg %>";
-        
+
         var pet = new Image();
         pet.src = "<%= puser.puffleimg %>";
-      window.onload = function() {
-      
-      if(pet.height > 300) nmbr = 1.5;
-      if(pet.height > 500) nmbr = 3; 
-      if(pet.height > 600) nmbr = 4; 
-      if(pet.height > 800) nmbr = 4; 
-      if(pet.height > 1000) nmbr = 10;
-      
-        var c = document.getElementById("myCanvas");
-        var ctx = c.getContext("2d");
-        ctx.drawImage(bg, 0, 0, c.width, c.height);
-        ctx.drawImage(pet, c.height / 3, c.height / 2, pet.width / nmbr, pet.height / nmbr);
-      }
-      </script>
+        window.onload = function () {
+
+            let nmbr = 0
+
+            if (pet.height > 300) nmbr = 1.5;
+            if (pet.height > 500) nmbr = 3;
+            if (pet.height > 600) nmbr = 4;
+            if (pet.height > 800) nmbr = 4;
+            if (pet.height > 1000) nmbr = 10;
+
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            ctx.drawImage(bg, 0, 0, c.width, c.height);
+            ctx.drawImage(pet, c.height / 3, c.height / 2, pet.width / nmbr, pet.height / nmbr);
+        }
+    </script>
     <%- include('partials/sidebar.ejs') %>
-        <div class="right" id="right">
-            <%- include('partials/navbar.ejs') %>
+    <div class="right" id="right">
+        <%- include('partials/navbar.ejs') %>
 
-                <div class="container">
-                    <center>
-                        <h2>Perfil</h2>
-                        <!--First-->
+        <div class="container">
+            <center>
+                <h2>Perfil</h2>
+                <!--First-->
 
-                        <div class="pcard" style="background-image: linear-gradient(
+                <div class="pcard" style="background-image: linear-gradient(
                             0deg,
                             #ffffff 50%,
                             #ffffffaa 80%,
                             rgba(255, 255, 255, 0) 100%
                           ),
                           url(<%=puser.profilebanner%>);">
-                            <div class="adjust">
-                                <img src=<%=user.avatarURL({ dynamic: true, format: "png" , size: 1024 })
-                                    || 'https://cdn.discordapp.com/embed/avatars/5.png?size=1024' %>
-                                alt="profile img" class="rounded-circle" width="80px" height="80px">
-                                <h1 class="text">
-                                    <%= user.username %> <img
-                                            src="https://cdn.discordapp.com/attachments/591157769181069332/752622240486522943/check.png"
-                                            height="16" width="16">
-                                </h1>
-                                <% let role='membro' ; if(user.id==='240269142848962560' ) role='Criador' %>
-                                    <span class="tag">
-                                        <%= role %>
-                                    </span>
-                            </div>
-                            <div class="footer-modal" style="margin: 0px; text-align: left;">
-                                <% let valorc='ninguem' ; if(puser.marry !=='noone' )
+                    <div class="adjust">
+                        <img src=<%=user.avatarURL({ dynamic: true, format: "png" , size: 1024 })
+                                    || 'https://cdn.discordapp.com/embed/avatars/5.png?size=1024' %> alt="profile img"
+                            class="rounded-circle" width="80px" height="80px">
+                        <h1 class="text">
+                            <%= user.username %> <img
+                                src="https://cdn.discordapp.com/attachments/591157769181069332/752622240486522943/check.png"
+                                height="16" width="16">
+                        </h1>
+                        <% let role='membro' ; if(user.id==='240269142848962560' ) role='Criador' %>
+                        <span class="tag">
+                            <%= role %>
+                        </span>
+                    </div>
+                    <div class="footer-modal" style="margin: 0px; text-align: left;">
+                        <% let valorc='ninguem' ; if(puser.marry !=='noone' )
                                     valorc=cliente.users.cache.get(puser.marry)?.username %>
-                                    <div style="float: left">
-                                        <p class="p-item"><i class="fas fa-hand-holding-heart"></i>
-                                            <%= valorc || 'ninguem' %>
-                                        </p>
-                                        <p class="p-item"><i class="fas fa-coins"></i> R2coins: <%= puser.money %>
-                                        </p>
-                                    </div>
-                                    <div style="float: right; text-align: right;">
-                                        <p class="p-item"><i class="fas fa-star"></i> Karma: <%= puser.karma %>
-                                        </p>
-                                        <p class="p-item"><i class="fa-solid fa-house"></i> Casa: <%= puser.iglut %>
-                                        </p>
-                                    </div>
-                                    <% if(puser.pufflet !== 'noinfo' ) { %>
-                                        <div>
-                                            <span class="catp" style="font-size: 20px;"> Pet: </span>
-                                            <div style="float: left">
-                                                <p class="p-item"><i class="fas fa-hand-holding-heart"></i>
-                                                    Nome:
-                                                </p>
-                                                <p class="p-item"><i class="fas fa-coins"></i> Tipo:
-                                                </p>
-                                            </div>
-                                            <% let nome = "não tem"; if(puser.pufflen !== 'noname') nome = puser.pufflen %>
-                                            <div style="float: right; text-align: right;">
-                                                <p class="p-item"> <%= nome %>
-                                                </p>
-                                                <p class="p-item"> <%= puser.pufflet %>
-                                                </p>
-                                            </div>
-                                            <canvas id="myCanvas" width="500" height="500" class="pet-p">
-                                                <img class="pet-p" src=<%=puser.puffleimg %> >
-                                                </canvas>
-                                        </div>
-                                        <% } %>
-                            </div>
+                        <div style="float: left">
+                            <p class="p-item"><i class="fas fa-hand-holding-heart"></i>
+                                <%= valorc || 'ninguem' %>
+                            </p>
+                            <p class="p-item"><i class="fas fa-coins"></i> R2coins: <%= puser.money %>
+                            </p>
                         </div>
-
-                    </center>
+                        <div style="float: right; text-align: right;">
+                            <p class="p-item"><i class="fas fa-star"></i> Karma: <%= puser.karma %>
+                            </p>
+                            <p class="p-item"><i class="fa-solid fa-house"></i> Casa: <%= puser.iglut %>
+                            </p>
+                        </div>
+                        <% if(puser.pufflet !== 'noinfo' ) { %>
+                        <div>
+                            <span class="catp" style="font-size: 20px;"> Pet: </span>
+                            <div style="float: left">
+                                <p class="p-item"><i class="fas fa-hand-holding-heart"></i>
+                                    Nome:
+                                </p>
+                                <p class="p-item"><i class="fas fa-coins"></i> Tipo:
+                                </p>
+                            </div>
+                            <% let nome = "não tem"; if(puser.pufflen !== 'noname') nome = puser.pufflen %>
+                            <div style="float: right; text-align: right;">
+                                <p class="p-item"> <%= nome %>
+                                </p>
+                                <p class="p-item"> <%= puser.pufflet %>
+                                </p>
+                            </div>
+                            <canvas id="myCanvas" width="500" height="500" class="pet-p">
+                                <img class="pet-p" src=<%=puser.puffleimg %>>
+                            </canvas>
+                        </div>
+                        <% } %>
+                    </div>
                 </div>
+
+            </center>
+        </div>
 </body>
 
 </html>
