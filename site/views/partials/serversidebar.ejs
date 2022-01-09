@@ -1,0 +1,42 @@
+<div class="sidebar" id="sidebarg">
+    <a class="hamburguer" onclick="openNav()">
+        <div class="item"><i class="fas fa-bars"></i></div>
+    </a>
+
+    <img class="menu-s-icon" <% if(server.icon===null ){ image='../assets/noicon.webp' } else { image=`
+        https://cdn.discordapp.com/icons/${server.id}/${server.icon}.png?size=256` }%> src=
+      <%= image %> width="128">
+    <p class="menu-s-name">
+        <%= server.name %>
+    </p>
+
+    <hr>
+
+    <script>
+        function openNav() {
+            let nav = document.getElementById("sidebarg");
+            if (nav.className === "sidebar") {
+                nav.className += " responsive";
+            } else {
+                nav.className = "sidebar";
+            }
+        }
+    </script>
+
+    <div class="discord-scroller">
+
+        <div class="info"> Misc </div>
+
+        <a href=<%= `/server?id=${server.id}&func=welcome` %>>
+            <div class="item"><i class="fas fa-door-open"></i> Welcome </div>
+        </a>
+
+        <div class="discord-end">
+            <a href="/dashboard">
+                <div class="item">
+                    <i class="fas fa-undo-alt"></i> back
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

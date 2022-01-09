@@ -47,6 +47,39 @@ app.get("/", async function (req, res) {
     });
 });
 
+app.get("/server", async function (req, res) {
+    if (!req.session.bearer_token) return res.redirect("/");
+    const { id, func } = req.query;
+    if (!id) return res.send({
+        erro: 'forneça um id'
+    })
+    let server = cliente.guilds.cache.get(id)
+    if(!server) return res.redirect("/login");
+
+    const user = await fetch(`https://discord.com/api/users/@me`, {
+        headers: {
+            Authorization: `Bearer ${req.session.bearer_token}`
+        },
+    }); // Fetching user data
+    const json = await user.json();
+
+    let data = await pdb.User.findOne({
+        userID: json.id
+    })
+    if (!data) await pdb.User.create({
+        userID: json.id
+    })
+
+    res.render("../site/views/server", {
+        cliente,
+        server,
+        data,
+        json,
+        req,
+        func
+    });
+});
+
 app.get("/dashboard", async function (req, res) {
     if (!req.session.bearer_token) return res.redirect("/");
 

@@ -647,6 +647,36 @@ a {
   max-height: auto;
 }
 
+.menu-name {
+  padding: 8px 16px;
+  text-align: center;
+  font-size: x-large;
+  text-shadow: 0 2px 25px rgba(255, 60, 239, 0.74);
+  width: auto;
+  display: block;
+  margin-top: 25px;
+  color: var(--secundaria);
+  font-family: "Fredoka One", cursive;
+}
+
+.menu-s-name {
+  padding: 8px 16px;
+  text-align: center;
+  width: auto;
+  display: block;
+  margin-top: 0px;
+  color: rgb(75, 75, 75);
+  font-family: "Fredoka One", cursive;
+}
+
+.menu-s-icon{
+  display: block;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+
 @media screen and (max-width: 800px) {
   .sidebar a {
     display: none;
@@ -661,6 +691,12 @@ a {
     display: none;
   }
   .sidebar .menu-name {
+    display: none;
+  }
+  .sidebar .menu-s-name {
+    display: none;
+  }
+  .sidebar .menu-s-icon {
     display: none;
   }
 }
@@ -679,6 +715,12 @@ a {
     display: block;
   }
   .responsive .menu-name {
+    display: block;
+  }
+  .responsive .menu-s-name {
+    display: block;
+  }
+  .responsive .menu-s-icon {
     display: block;
   }
   .server {
@@ -721,18 +763,6 @@ a {
   .meio {
     width: 90%;
   }
-}
-
-.menu-name {
-  padding: 8px 16px;
-  text-align: center;
-  font-size: x-large;
-  text-shadow: 0 2px 25px rgba(255, 60, 239, 0.74);
-  width: auto;
-  display: block;
-  margin-top: 25px;
-  color: var(--secundaria);
-  font-family: "Fredoka One", cursive;
 }
 
 .pet {
