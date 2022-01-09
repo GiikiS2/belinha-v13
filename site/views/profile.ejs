@@ -43,6 +43,26 @@
 </head>
 
 <body>
+    <script>
+        var bg = new Image();   // Create new img element
+        bg.src = "<%= puser.igluimg %>";
+        
+        var pet = new Image();
+        pet.src = "<%= puser.puffleimg %>";
+      window.onload = function() {
+      
+      if(pet.height > 300) nmbr = 1.5;
+      if(pet.height > 500) nmbr = 3; 
+      if(pet.height > 600) nmbr = 4; 
+      if(pet.height > 800) nmbr = 4; 
+      if(pet.height > 1000) nmbr = 10;
+      
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.drawImage(bg, 0, 0, c.width, c.height);
+        ctx.drawImage(pet, c.height / 3, c.height / 2, pet.width / nmbr, pet.height / nmbr);
+      }
+      </script>
     <%- include('partials/sidebar.ejs') %>
         <div class="right" id="right">
             <%- include('partials/navbar.ejs') %>
@@ -89,7 +109,7 @@
                                         <p class="p-item"><i class="fa-solid fa-house"></i> Casa: <%= puser.iglut %>
                                         </p>
                                     </div>
-                                    <% if(puser.pufflet !=='noinfo' ) { %>
+                                    <% if(puser.pufflet !== 'noinfo' ) { %>
                                         <div>
                                             <span class="catp" style="font-size: 20px;"> Pet: </span>
                                             <div style="float: left">
@@ -106,7 +126,9 @@
                                                 <p class="p-item"> <%= puser.pufflet %>
                                                 </p>
                                             </div>
-                                            <img class="pet-p" src=<%=puser.puffleimg %> >
+                                            <canvas id="myCanvas" width="500" height="500" class="pet-p">
+                                                Your browser does not support the HTML5 canvas tag.
+                                                </canvas>
                                         </div>
                                         <% } %>
                             </div>

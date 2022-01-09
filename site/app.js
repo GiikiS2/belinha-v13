@@ -86,29 +86,6 @@ app.get("/dashboard", async function (req, res) {
     });
 });
 
-app.get("/pet", async function (req, res) {
-    if (!req.session.bearer_token) return res.redirect("/");
-
-    const user = await fetch(`https://discord.com/api/users/@me`, {
-        headers: {
-            Authorization: `Bearer ${req.session.bearer_token}`
-        },
-    });
-    const json = await user.json();
-    let data = await pdb.User.findOne({
-        userID: json.id
-    })
-    if (!data) await pdb.User.create({
-        userID: json.id
-    })
-
-    res.render("../site/views/pet", {
-        json,
-        data,
-        req
-    });
-});
-
 app.get("/shop", async function (req, res) {
     if (!req.session.bearer_token) return res.redirect("/");
     const {
