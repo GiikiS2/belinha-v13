@@ -1,5 +1,6 @@
 var express = require("express");
 const pdb = require("../misc/economydb.js");
+const gdb = require("../misc/guilddb.js");
 let config = require("../config.json");
 var app = express();
 let client = require("../index.js");
@@ -71,10 +72,10 @@ app.get("/server", async function (req, res) {
         erro: 'você não as permissões necessarias'
     })
 
-    let data = await pdb.welcomedb.findOne({
+    let data = await gdb.welcomedb.findOne({
         guildID: id
     })
-    if (!data) await pdb.welcomedb.create({
+    if (!data) await gdb.welcomedb.create({
         guildID: id
     })
 
