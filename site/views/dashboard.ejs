@@ -54,7 +54,7 @@
         <a href=<%= `/server?id=${server.id}` %>>
           <div class="server">
             <img class="server-icon" <% if(server.icon===null ){ image='../assets/noicon.webp' } else { image=`
-              https://cdn.discordapp.com/icons/${server.id}/${server.icon}.png?size=256` }%> src=
+              https://cdn.discordapp.com/icons/${server.id}/${server.icon}?size=256` }%> src=
             <%= image %> <% if(!cliente.guilds.cache.get(server.id)) { %>
               style="-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
               filter: grayscale(100%);"

@@ -2,58 +2,82 @@
 <html lang="pt-br">
 
 <head>
-  <meta data-n-head="ssr" data-hid="theme-color" name="theme-color" content="#fc035a" />
-  <meta name="title" content="Belinha Bot Website" />
-  <meta name="description" content="um simples bot para discord :)" />
-  <meta name="keywords" content="discord, bot, giiki, giikinotfound, belinha, r2" />
-  <meta name="robots" content="index, follow" />
-  <meta property="og:image"
-    content="https://media.discordapp.net/attachments/803083179706679366/838806028656443392/belinha.png?width=480&height=480" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <link id="favicon" rel="icon"
-    href="https://media.discordapp.net/attachments/821036317344923660/838605199123021864/belinha.png?width=480&height=480"
-    type="image/x-icon" />
-  <meta name="language" content="Portuguese" />
+    <meta data-n-head="ssr" data-hid="theme-color" name="theme-color" content="#fc035a" />
+    <meta name="title" content="Belinha Bot Website" />
+    <meta name="description" content="um simples bot para discord :)" />
+    <meta name="keywords" content="discord, bot, giiki, giikinotfound, belinha, r2" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:image"
+        content="https://media.discordapp.net/attachments/803083179706679366/838806028656443392/belinha.png?width=480&height=480" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link id="favicon" rel="icon"
+        href="https://media.discordapp.net/attachments/821036317344923660/838605199123021864/belinha.png?width=480&height=480"
+        type="image/x-icon" />
+    <meta name="language" content="Portuguese" />
 
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Belinha dashboard 🎀</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Belinha dashboard 🎀</title>
 
-  <link href="css/style.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
 
-  <link rel="Stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
-  <script src="https://kit.fontawesome.com/a076d05399.js%22%3E"></script>
-  <link rel="stylesheet" href="https://kurayami.ml/css/now-ui-kit.css" />
-  <link rel="stylesheet" href="https://kurayami.ml/css/bootstrap.min.css" />
+    <link rel="Stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
+    <script src="https://kit.fontawesome.com/a076d05399.js%22%3E"></script>
+    <link rel="stylesheet" href="https://kurayami.ml/css/now-ui-kit.css" />
+    <link rel="stylesheet" href="https://kurayami.ml/css/bootstrap.min.css" />
 
-  <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
 
-  <script src="https://kit.fontawesome.com/a076d05399.js%22%3E"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js%22%3E"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
-  <%- include('partials/serversidebar.ejs') %>
-  <div class="right" id="right">
-    <%- include('partials/navbar.ejs') %>
+    <%- include('partials/serversidebar.ejs') %>
+    <div class="right" id="right">
+        <%- include('partials/navbar.ejs') %>
 
-    <div class="meio">
-      <% if(!func) {%>
-        <h2> Dashboard de server! </h2>
-        <p style="float: right; margin-top: 25px;"> <img src="../assets/belinha poliça.png" style="width: 40%; height: auto; float: left">
-        Aqui você poderá configurar a Belinha individualmente em cada servidor! :D </p>
-        <% } %>
-       
+        <div class="meio">
+            <% if(!func) {%>
+            <h2> Dashboard de server! </h2>
+            <p style="float: right; margin-top: 25px;"> <img src="../assets/belinha poliça.png"
+                    style="width: 40%; height: auto; float: left">
+                Aqui você poderá configurar a Belinha individualmente em cada servidor! :D
+            </p>
+            <% } else if(func === "welcome") { %>
+                <h2> Welcome! </h2>
+                
+                <img src="https://media.discordapp.net/attachments/925137065224597567/929938758340595773/unknown.png" 
+                style="margin-top: 10px; height: 270px; width: auto; display: block; margin-left: auto; margin-right: auto;">
+                <p style="text-align: center; margin-top: 10px;">
+                    A Belinha cria mensagens personalizadas para dar as boas-vindas aos novos membros.
+                </p>
+                <hr>
+                <div class="toggle">
+                    <div class="information" style="float: left">
+                        Ativar módulo?
+                    </div>
+                    <label class="switch" style="float: right">
+                        <input type="checkbox" <% if(data.onoff === "on") {%> checked <% } %> >
+                        <span class="slider round"></span>
+                      </label>
+                      
+                </div>
+
+
+
+            <% } %>
+
+        </div>
     </div>
-  </div>
 </body>
 
 </html>

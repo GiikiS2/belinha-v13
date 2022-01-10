@@ -49,12 +49,15 @@ app.get("/", async function (req, res) {
 
 app.get("/server", async function (req, res) {
     if (!req.session.bearer_token) return res.redirect("/");
-    const { id, func } = req.query;
+    const {
+        id,
+        func
+    } = req.query;
     if (!id) return res.send({
         erro: 'forneça um id'
     })
     let server = cliente.guilds.cache.get(id)
-    if(!server) return res.redirect("https://discord.com/api/oauth2/authorize?client_id=757352173481885717&permissions=8&scope=bot");
+    if (!server) return res.redirect("https://discord.com/api/oauth2/authorize?client_id=757352173481885717&permissions=8&scope=bot");
 
     const user = await fetch(`https://discord.com/api/users/@me`, {
         headers: {
@@ -64,13 +67,15 @@ app.get("/server", async function (req, res) {
     const json = await user.json();
 
     let membro = server.members.cache.get(json.id)
-    if(!membro.permissions.has("MANAGE_CHANNELS")) return res.send({erro: 'você não as permissões necessarias'})
-
-    let data = await pdb.User.findOne({
-        userID: json.id
+    if (!membro.permissions.has("MANAGE_CHANNELS")) return res.send({
+        erro: 'você não as permissões necessarias'
     })
-    if (!data) await pdb.User.create({
-        userID: json.id
+
+    let data = await pdb.welcomedb.findOne({
+        guildID: id
+    })
+    if (!data) await pdb.welcomedb.create({
+        guildID: id
     })
 
     res.render("../site/views/server", {
