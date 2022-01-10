@@ -63,6 +63,9 @@ app.get("/server", async function (req, res) {
     }); // Fetching user data
     const json = await user.json();
 
+    let membro = server.members.cache.get(json.id)
+    if(!membro.permissions.has("MANAGE_CHANNELS")) return res.send({erro: 'você não as permissões necessarias'})
+
     let data = await pdb.User.findOne({
         userID: json.id
     })
@@ -106,7 +109,7 @@ app.get("/dashboard", async function (req, res) {
     })
 
     let permguild = Object.values(guildas).filter(
-        (valor) => (valor.permissions & (1 << 3)) == 1 << 3
+        (valor) => (valor.permissions & (1 << 4)) == 1 << 4
     );
 
     let mootguilds = permguild //Guilds.filter(value => permguild.includes(value.id));
