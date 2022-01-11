@@ -4,6 +4,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
 /*MAIN*/
@@ -1181,11 +1182,11 @@ hr.rounded {
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #63ff7d;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #8eff7f;
 }
 
 input:checked + .slider:before {
@@ -1204,7 +1205,7 @@ input:checked + .slider:before {
 }
 
 .information {
-  color: rgba(114,118,126,.8);
+  color: rgba(0, 0, 0, 0.857);
   font-size: 18px;
   margin-top: 4px;
   line-height: 20px;
@@ -1212,7 +1213,40 @@ input:checked + .slider:before {
 }
 
 .toggle {
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+select{
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border: none;
+  border-radius: 10px;
+  padding: 7px;
+  box-shadow: 0 2px 25px #00001c17;
+  list-style: none;
+  transition: all 0.2s;
+  border: none;
+  background-color: rgb(248, 248, 248);
+  border:0px;
+  outline:0px;
+  scroll-behavior: smooth;
+  cursor: pointer;
+  font-family: 'Source Sans Pro', sans-serif !important;
+  color:rgba(0, 0, 0, 0.686);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 5px;
+  padding-right: 15px;
+}
+
+select:hover{
+  box-shadow: 0 2px 25px #00001c35;
 }

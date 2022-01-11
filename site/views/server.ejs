@@ -53,26 +53,38 @@
                 Aqui você poderá configurar a Belinha individualmente em cada servidor! :D
             </p>
             <% } else if(func === "welcome") { %>
-                <h2> Welcome! </h2>
-                
-                <img src="https://media.discordapp.net/attachments/925137065224597567/929938758340595773/unknown.png" 
+            <h2> Welcome! </h2>
+
+            <img src="https://media.discordapp.net/attachments/925137065224597567/929938758340595773/unknown.png"
                 style="margin-top: 10px; height: 270px; width: auto; display: block; margin-left: auto; margin-right: auto;">
-                <p style="text-align: center; margin-top: 10px;">
-                    A Belinha cria mensagens personalizadas para dar as boas-vindas aos novos membros.
-                </p>
-                <hr>
-                <div class="toggle">
-                    <div class="information" style="float: left">
-                        Ativar módulo?
-                    </div>
-                    <label class="switch" style="float: right">
-                        <input type="checkbox" <% if(datas.onoff === "on") {%> checked <% } %> >
-                        <span class="slider round"></span>
-                      </label>
-                      
+            <p style="text-align: center; margin-top: 10px;">
+                A Belinha cria mensagens personalizadas para dar as boas-vindas aos novos membros.
+            </p>
+            <hr>
+            <div class="toggle">
+                <div class="information" style="float: left">
+                    Ativar módulo?
                 </div>
+                <label class="switch" style="float: right">
+                    <input type="checkbox" <% if(datas.onoff === "on") {%> checked <% } %>>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="toggle">
+                <div class="information" style="float: left">
+                    Canal de boas-vindas
+                </div>
+                    <select name="canal" id="canal">
+                        <% server.channels.cache.forEach( canal =>  { %>
+                            <option value="<%= canal.name %>"><%= canal.name %></option>
+                        <% }) %>
+                    </select>
+            </div>
 
-
+            <button type="submit" class="discord-btn"
+                style="float: right; background-color: rgb(81, 255, 125); margin-top: 100px !important;">
+                <i class="fas fa-save"></i> Save
+            </button>
 
             <% } %>
 
