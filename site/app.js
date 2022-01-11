@@ -72,17 +72,25 @@ app.get("/server", async function (req, res) {
         erro: 'você não as permissões necessarias'
     })
 
-    let data = await gdb.welcomedb.findOne({
+    let datas = await gdb.welcomedb.findOne({
         guildID: id
     })
-    if (!data) await gdb.welcomedb.create({
+    if (!datas) await gdb.welcomedb.create({
         guildID: id
+    })
+
+    let data = await pdb.User.findOne({
+        userID: json.id
+    })
+    if (!data) await pdb.User.create({
+        userID: json.id
     })
 
     res.render("../site/views/server", {
         cliente,
         server,
         data,
+        datas,
         json,
         req,
         func

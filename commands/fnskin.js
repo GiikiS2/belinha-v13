@@ -3,7 +3,7 @@ const axios = require("axios");
 
 module.exports = {
   name: "skin",
-  function: "mostrar as informações de um cosmético do fortnite",
+  desc: "mostrar as informações de um cosmético do fortnite",
   categoria: "games",
 };
 
