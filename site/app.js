@@ -101,7 +101,6 @@ app.get("/server", async function (req, res) {
 app.post('/server', async function (req, res, next) {
 
     try{
-        res.redirect(`/server?id=${req.body.id}&func=welcome`);
         if(req.body.onoff){
             await gdb.welcomedb.findOneAndUpdate({guildID: req.body.id}, {onoff: 'on'});
         }else{
@@ -123,6 +122,8 @@ app.post('/server', async function (req, res, next) {
         await gdb.welcomedb.findOneAndUpdate({guildID: req.body.id}, {Description: req.body.desc});
         await gdb.welcomedb.findOneAndUpdate({guildID: req.body.id}, {Title: req.body.titulo});
         await gdb.welcomedb.findOneAndUpdate({guildID: req.body.id}, {canalID: req.body.canal});
+
+        await res.redirect(`/server?id=${req.body.id}&func=welcome`);
     } catch (err){
         console.log(err)
     }
