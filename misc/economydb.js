@@ -1,5 +1,4 @@
-const mongoose = require("mongoose");
-const Discord = require('discord.js');
+const mongoose = require("mongoose")
  
 mongoose.connect(process.env['MONGODB_URI'], { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
   console.log('💸│database economica Conectado com sucesso! 👌')

@@ -41,6 +41,28 @@
 </head>
 
 <body>
+    <script>
+        function validateForm() {
+            var z = document.forms["myForm"]["titulo"].value;
+            if (z == "" || z == null) {
+                alert("Preencha o campo Título");
+                return false;
+            }
+
+            var y = document.forms["myForm"]["desc"].value;
+            if (y == "" || y == null) {
+                alert("Preencha o campo Descrição");
+                return false;
+            }
+
+            var x = document.forms["myForm"]["footer"].value;
+            if (x == "" || x == null) {
+                alert("Preencha o campo Footer");
+                return false;
+            }
+
+        }
+    </script>
     <%- include('partials/serversidebar.ejs') %>
     <div class="right" id="right">
         <%- include('partials/navbar.ejs') %>
@@ -53,7 +75,7 @@
                 Aqui você poderá configurar a Belinha individualmente em cada servidor! :D
             </p>
             <% } else if(func === "welcome") { %>
-            <h2> Welcome! </h2>
+            <h2>Welcome! </h2>
 
             <img src="https://media.discordapp.net/attachments/925137065224597567/929938758340595773/unknown.png"
                 style="margin-top: 10px; height: 270px; width: auto; display: block; margin-left: auto; margin-right: auto;">
@@ -61,30 +83,76 @@
                 A Belinha cria mensagens personalizadas para dar as boas-vindas aos novos membros.
             </p>
             <hr>
-            <div class="toggle">
-                <div class="information" style="float: left">
-                    Ativar módulo?
+            <form name="myForm" action="/server" method="POST" onsubmit="return validateForm()" required>
+                <input type="hidden" name="id" value="<%= id %>" />
+                <div class="toggle">
+                    <div class="information" style="float: left">
+                        Ativar módulo?
+                    </div>
+                    <label class="switch" style="float: right">
+                        <input type="checkbox" name="onoff" <% if(datas.onoff === "on") {%> checked <% } %>>
+                        <span class="slider round"></span>
+                    </label>
                 </div>
-                <label class="switch" style="float: right">
-                    <input type="checkbox" <% if(datas.onoff === "on") {%> checked <% } %>>
-                    <span class="slider round"></span>
-                </label>
-            </div>
-            <div class="toggle">
-                <div class="information" style="float: left">
-                    Canal de boas-vindas
-                </div>
+                <div class="toggle">
+                    <div class="information" style="float: left">
+                        Canal de boas-vindas:
+                    </div>
                     <select name="canal" id="canal">
-                        <% server.channels.cache.forEach( canal =>  { %>
-                            <option value="<%= canal.name %>"><%= canal.name %></option>
+                        <% server.channels.cache.filter(c => c.type === "GUILD_TEXT").forEach( canal =>  { %>
+                        <option value="<%= canal.id %>"><%= canal.name %></option>
                         <% }) %>
                     </select>
-            </div>
+                </div>
+                <hr>
+                <h2 style="color: rgba(0, 0, 0, 0.453);"><i class="fas fa-file-alt"></i>Embed</h2>
+                <div class="toggle">
+                    <div class="information" style="float: left">
+                        Título:
+                    </div>
+                    <textarea class="field" id="titulo" name="titulo"><%= datas.Title %></textarea>
+                </div>
 
-            <button type="submit" class="discord-btn"
-                style="float: right; background-color: rgb(81, 255, 125); margin-top: 100px !important;">
-                <i class="fas fa-save"></i> Save
-            </button>
+                <div class="toggle">
+                    <div class="information" style="float: left">
+                        Descrição:
+                    </div>
+                    <textarea class="field" id="desc" name="desc"><%= datas.Description %></textarea>
+                </div>
+
+                <div class="toggle">
+                    <div class="information" style="float: left">
+                        Footer:
+                    </div>
+                    <textarea class="field" id="footer" name="footer"><%= datas.Footer %></textarea>
+                </div>
+
+                <div class="toggle">
+                    <div class="information" style="float: left">
+                        Thumbnail com ícone do servidor?
+                    </div>
+                    <label class="switch" style="float: right">
+                        <input type="checkbox" name="thumbnail" <% if(datas.thumbnail=== "on") {%> checked <% } %>>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="toggle">
+                    <div class="information" style="float: left">
+                        Imagem de boas vindas?
+                    </div>
+                    <label class="switch" style="float: right">
+                        <input type="checkbox" name="imagem" <% if(datas.image === "on") {%> checked <% } %>>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <hr>
+                <button type="submit" class="discord-btn"
+                    style="float: right; background-color: rgb(81, 255, 125); margin-top: 30px !important;">
+                    <i class="fas fa-save"></i> Save
+                </button>
+            </form>
 
             <% } %>
 

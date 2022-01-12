@@ -90,12 +90,44 @@ app.get("/server", async function (req, res) {
         cliente,
         server,
         data,
+        id,
         datas,
         json,
         req,
         func
     });
 });
+
+app.post('/server', async function (req, res, next) {
+
+    try{
+        res.redirect(`/server?id=${req.body.id}&func=welcome`);
+        if(req.body.onoff){
+            await gdb.welcomedb.findOneAndUpdate({guildID: req.body.id}, {onoff: 'on'});
+        }else{
+            await gdb.welcomedb.findOneAndUpdate({guildID: req.body.id}, {onoff: 'off'});
+        }
+    
+        if(req.body.thumbnail){
+            await gdb.welcomedb.findOneAndUpdate({guildID: req.body.id}, {Thumbnail: 'on'});
+        }else{
+            await gdb.welcomedb.findOneAndUpdate({guildID: req.body.id}, {Thumbnail: 'off'});
+        }
+    
+        if(req.body.imagem){
+            await gdb.welcomedb.findOneAndUpdate({guildID: req.body.id}, {Image: 'on'});
+        }else{
+            await gdb.welcomedb.findOneAndUpdate({guildID: req.body.id}, {Image: 'off'});
+        }
+        await gdb.welcomedb.findOneAndUpdate({guildID: req.body.id}, {Footer: req.body.footer});
+        await gdb.welcomedb.findOneAndUpdate({guildID: req.body.id}, {Description: req.body.desc});
+        await gdb.welcomedb.findOneAndUpdate({guildID: req.body.id}, {Title: req.body.titulo});
+        await gdb.welcomedb.findOneAndUpdate({guildID: req.body.id}, {canalID: req.body.canal});
+    } catch (err){
+        console.log(err)
+    }
+});
+
 
 app.get("/dashboard", async function (req, res) {
     if (!req.session.bearer_token) return res.redirect("/");
