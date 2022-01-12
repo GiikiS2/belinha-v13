@@ -25,5 +25,8 @@
     },
     {
         "nome": "star sky", "preço": "1000", "alt": "star_sky"
+    },
+    {
+        "nome": "moe moe shop", "preço": "2000", "alt": "moe_moe_shop"
     }
 ]
