@@ -39,6 +39,7 @@ const row2 = new MessageActionRow()
         .addComponents([button2])
   
         console.log(user)
+        console.log(userM)
   let embed = new Discord.MessageEmbed()
   .setDescription(`
   \\🔖**Nome:** ${user.username}
