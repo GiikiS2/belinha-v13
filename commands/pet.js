@@ -35,7 +35,7 @@ module.exports.run = async (client, message, args) => {
       .setEmoji(`↩️`)
   );
 
-  let data = await pdb.User.findOne({userID: message.author.id})
+  let data = await pdb.User.findOne({userID: people.id})
 
   let principembed = new Discord.MessageEmbed()
     .setTitle(`**<:lola:924582993715163156> | Painel Pet da Belinha!**`)
@@ -100,7 +100,7 @@ module.exports.run = async (client, message, args) => {
             if(m.content.includes('   ')) return message.reply('pra que tanto espaço em um nome? :fearful:') 
 
 
-        await pdb.User.findOneAndUpdate({userID: message.author.id}, {pufflen: m.content});
+        await pdb.User.findOneAndUpdate({userID: people.id}, {pufflen: m.content});
 
         let embed = new Discord.MessageEmbed()
         .setTitle(`Agora o nome de seu pet é ${m.content}`)
