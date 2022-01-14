@@ -1,5 +1,5 @@
 const Discord = require("discord.js")
-const pdb =  require('../data/economydb.js');
+const pdb = require("../misc/economydb.js");
 const mongoose = require("mongoose");
 
 module.exports = {
