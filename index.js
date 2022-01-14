@@ -1,5 +1,3 @@
-require("http").createServer((req, res) => res.end(process.version)).listen()
-
 process.on('uncaughtException', function (err) {
   console.error(err);
   console.log("Uma nova mulher... firme e forte");
