@@ -38,7 +38,7 @@ module.exports.run = async (client, message, args) => {
     {
         let embeddi = new Discord.MessageEmbed()
         .setColor('#2f3136')
-        .setTitle(`<:aaaaaaa:838498951199588402> | **__Calma ai sua jamanta!__**`)
+        .setTitle(`<:aaaaaaa:838498951199588402> | **__Calma ai!__**`)
         message.reply({embeds: [embeddi]})
 } else {
 
