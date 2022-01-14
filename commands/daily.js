@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 module.exports = {
     name: "daily",
-    desc: 'resgatar r2coins diariamente',
+    desc: 'resgate r2coins diariamente',
     categoria: 'social'
 }
 
